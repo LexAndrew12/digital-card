@@ -1,0 +1,226 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  color-scheme: dark;
+  --bg: #05070d;
+  --panel: rgba(17, 22, 37, 0.72);
+  --panel-strong: rgba(22, 29, 49, 0.92);
+  --line: rgba(255, 255, 255, 0.12);
+  --text: #f8faff;
+  --muted: #a9b3ca;
+  --blue: #4da3ff;
+  --purple: #8c6cff;
+}
+
+html, body {
+  min-height: 100%;
+  margin: 0;
+  background:
+    radial-gradient(circle at 15% 12%, rgba(61, 126, 255, 0.18), transparent 31rem),
+    radial-gradient(circle at 90% 84%, rgba(137, 83, 255, 0.17), transparent 28rem),
+    var(--bg);
+  font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--text);
+}
+
+body {
+  display: grid;
+  place-items: center;
+  padding: 24px 14px;
+}
+
+.page-shell {
+  width: min(100%, 470px);
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  padding: 34px 24px 24px;
+  border: 1px solid var(--line);
+  border-radius: 34px;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.05), rgba(255,255,255,.01)),
+    rgba(7, 10, 19, .9);
+  box-shadow:
+    0 30px 80px rgba(0,0,0,.52),
+    inset 0 1px 0 rgba(255,255,255,.08);
+  backdrop-filter: blur(24px);
+}
+
+.ambient {
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: .35;
+  pointer-events: none;
+}
+
+.ambient-one {
+  top: -90px;
+  right: -100px;
+  background: var(--blue);
+}
+
+.ambient-two {
+  bottom: -110px;
+  left: -120px;
+  background: var(--purple);
+}
+
+.portrait-wrap {
+  position: relative;
+  width: 170px;
+  height: 170px;
+  margin: 0 auto 22px;
+  padding: 4px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #92d1ff, #446dff 48%, #a06fff);
+  box-shadow:
+    0 0 0 8px rgba(94, 128, 255, .08),
+    0 16px 50px rgba(54, 91, 222, .35);
+}
+
+.portrait {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #0a0e19;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: #8fa4d1;
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .18em;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2.1rem, 9vw, 3.15rem);
+  line-height: 1;
+  letter-spacing: -.055em;
+}
+
+.subtitle {
+  margin: 12px auto 0;
+  color: var(--muted);
+  line-height: 1.55;
+  font-size: .95rem;
+}
+
+.subtitle span {
+  color: #667496;
+  padding: 0 .2rem;
+}
+
+.button {
+  position: relative;
+  z-index: 1;
+  min-height: 66px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid rgba(255,255,255,.13);
+  border-radius: 20px;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 750;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.075), rgba(255,255,255,.018)),
+    var(--panel);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.07),
+    0 12px 28px rgba(0,0,0,.22);
+  transition: transform .16s ease, border-color .16s ease, background .16s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.button:active {
+  transform: scale(.97);
+}
+
+.button:hover {
+  border-color: rgba(125,166,255,.52);
+}
+
+.primary {
+  min-height: 76px;
+  margin-bottom: 14px;
+  border-color: rgba(126, 174, 255, .63);
+  background:
+    linear-gradient(115deg, rgba(34, 135, 255, .74), rgba(113, 68, 232, .72)),
+    var(--panel-strong);
+  box-shadow:
+    0 14px 34px rgba(64, 91, 221, .34),
+    inset 0 1px 0 rgba(255,255,255,.22);
+  font-size: 1.12rem;
+}
+
+.button-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.icon, .brand {
+  width: 31px;
+  height: 31px;
+  display: inline-grid;
+  place-items: center;
+  font-size: 1.24rem;
+}
+
+.brand {
+  border-radius: 50%;
+  font-weight: 900;
+}
+
+.tiktok {
+  color: #fff;
+  text-shadow: -2px 0 #25f4ee, 2px 0 #fe2c55;
+}
+
+.facebook {
+  background: #1877f2;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.tap-note {
+  position: relative;
+  z-index: 1;
+  margin: 24px 0 7px;
+  text-align: center;
+  color: #b9c4dd;
+  font-size: .82rem;
+}
+
+footer {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: #6f7a94;
+  font-size: .72rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 370px) {
+  .card { padding-inline: 17px; }
+  .button-grid { grid-template-columns: 1fr; }
+}

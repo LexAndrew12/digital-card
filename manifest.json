@@ -1,0 +1,16 @@
+{
+  "name": "Zoltai Sándor – Digitális névjegy",
+  "short_name": "Zoltai Sándor",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#05070d",
+  "theme_color": "#080b14",
+  "icons": [
+    {
+      "src": "sandor.jpg",
+      "sizes": "900x900",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ]
+}
