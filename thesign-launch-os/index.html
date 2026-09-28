@@ -385,7 +385,64 @@ document.getElementById("restoreBackup").addEventListener("click",()=>document.g
 document.getElementById("restoreFile").addEventListener("change",e=>{const file=e.target.files[0];if(!file)return;const r=new FileReader();r.onload=()=>{try{const obj=JSON.parse(r.result);const data=obj.data||obj;if(!data.leads||!data.outreach)throw new Error("invalid");Object.keys(state).forEach(k=>delete state[k]);Object.assign(state,data);state.plan=state.plan||{current:1,completed:[],checks:{}};save();makeSnapshot("restore");ping("Backup visszaállítva ✓")}catch{ping("Érvénytelen backup fájl")}};r.readAsText(file);e.target.value=""});
 document.getElementById("makeSnapshot").addEventListener("click",async()=>{await makeSnapshot("manual");ping("Snapshot elkészült ✓")});
 
-const last=localStorage.getItem("ts_view");if(last&&document.getElementById(last))openView(last);renderCityOptions();render();initStorage();
+
+async function syncRemoteLeads(){
+ try{
+  const res=await fetch("data/leads.json?v="+Date.now(),{cache:"no-store"});
+  if(!res.ok)throw new Error("HTTP "+res.status);
+  const payload=await res.json();
+  const remoteLeads=Array.isArray(payload.leads)?payload.leads:[];
+  let changed=false;
+  for(const r of remoteLeads){
+   if(!r||!r.business||!r.city)continue;
+   const city=canonicalCity(r.city)||r.city;
+   let lead=(r.remoteId&&state.leads.find(x=>x.remoteId===r.remoteId))||findLead(r.business,city);
+   const existed=!!lead;
+   if(!lead){
+    lead={id:id(),business:r.business,city,contact:"",note:"",status:"new",channel:"",followup:"",lastContact:"",history:[]};
+    state.leads.push(lead);
+    changed=true;
+   }
+   const remoteStamp=r.updatedAt||payload.updatedAt||"";
+   const remoteTime=Date.parse(remoteStamp)||0;
+   const appliedTime=Date.parse(lead.remoteUpdatedAt||"")||0;
+   const firstLink=!lead.remoteId;
+   if(firstLink){
+    lead.remoteId=r.remoteId||lead.remoteId||"";
+    lead.remoteUpdatedAt=remoteStamp||lead.remoteUpdatedAt||"";
+    if(r.category&&!lead.category)lead.category=r.category;
+    if(r.contact&&!lead.contact)lead.contact=r.contact;
+    if(r.publicNote&&!lead.note)lead.note=r.publicNote;
+    if(!existed){
+     if(r.status)lead.status=r.status;
+     if(r.channel)lead.channel=r.channel;
+     if(r.followup)lead.followup=r.followup;
+     if(r.lastContact)lead.lastContact=r.lastContact;
+    }
+    changed=true;
+    continue;
+   }
+   if(remoteTime>appliedTime){
+    if(r.business)lead.business=r.business;
+    if(city)lead.city=city;
+    if(r.category!==undefined)lead.category=r.category;
+    if(r.contact!==undefined)lead.contact=r.contact;
+    if(r.publicNote!==undefined)lead.note=r.publicNote;
+    if(r.status!==undefined)lead.status=r.status||"new";
+    if(r.channel!==undefined)lead.channel=r.channel||"";
+    if(r.followup!==undefined)lead.followup=r.followup||"";
+    if(r.lastContact!==undefined)lead.lastContact=r.lastContact||"";
+    lead.remoteUpdatedAt=remoteStamp;
+    changed=true;
+   }
+  }
+  if(changed){save();ping("GitHub szinkron kész ✓")}
+ }catch(err){
+  console.warn("Remote lead sync failed",err);
+ }
+}
+
+const last=localStorage.getItem("ts_view");if(last&&document.getElementById(last))openView(last);renderCityOptions();render();initStorage();syncRemoteLeads();
 })();
 </script>
 </body>
