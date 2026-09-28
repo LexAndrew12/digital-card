@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-28T03:55:00+02:00",
+  "updatedAt": "2026-09-28T18:55:00+02:00",
   "privacy": "public-safe",
   "note": "Only public/business-safe pipeline data belongs here. Do not store confidential customer notes, personal data, secrets or credentials.",
   "leads": [
@@ -9,22 +9,19 @@
       "business": "Zsani-Nails Köröm Kuckó",
       "city": "Gyomaendrőd",
       "category": "Körmös / beauty",
-      "status": "new",
-      "channel": "",
+      "status": "no",
+      "channel": "messenger",
       "followup": "",
-      "lastContact": "",
-      "updatedAt": "2026-09-28T03:55:00+02:00"
+      "lastContact": "2026-09-28",
+      "updatedAt": "2026-09-28T18:55:00+02:00"
     },
     {
       "remoteId": "gyoma-kutyapatyolat",
       "business": "Kutyapatyolat kutyakozmetika",
       "city": "Gyomaendrőd",
       "category": "Kutyakozmetika",
-      "status": "new",
-      "channel": "",
-      "followup": "",
-      "lastContact": "",
-      "updatedAt": "2026-09-28T03:55:00+02:00"
+      "deleted": true,
+      "updatedAt": "2026-09-28T18:55:00+02:00"
     },
     {
       "remoteId": "gyoma-nagy-daniel-auto",
@@ -35,7 +32,7 @@
       "channel": "",
       "followup": "",
       "lastContact": "",
-      "updatedAt": "2026-09-28T03:55:00+02:00"
+      "updatedAt": "2026-09-28T18:55:00+02:00"
     },
     {
       "remoteId": "gyoma-papas-autoszerviz",
@@ -46,29 +43,40 @@
       "channel": "",
       "followup": "",
       "lastContact": "",
-      "updatedAt": "2026-09-28T03:55:00+02:00"
+      "updatedAt": "2026-09-28T18:55:00+02:00"
     },
     {
       "remoteId": "gyoma-szilvia-panzio",
       "business": "Szilvia Panzió",
       "city": "Gyomaendrőd",
       "category": "Panzió",
-      "status": "new",
-      "channel": "",
-      "followup": "",
-      "lastContact": "",
-      "updatedAt": "2026-09-28T03:55:00+02:00"
+      "status": "waiting",
+      "channel": "messenger",
+      "followup": "2026-10-02",
+      "lastContact": "2026-09-28",
+      "updatedAt": "2026-09-28T18:55:00+02:00"
+    },
+    {
+      "remoteId": "gyoma-la-vita-pihenohaz",
+      "business": "La Vita Pihenőház",
+      "city": "Gyomaendrőd",
+      "category": "Vendégház",
+      "status": "waiting",
+      "channel": "messenger",
+      "followup": "2026-10-02",
+      "lastContact": "2026-09-28",
+      "updatedAt": "2026-09-28T18:55:00+02:00"
     },
     {
       "remoteId": "gyoma-borostyan-guesthouse",
       "business": "Borostyán Guesthouse",
       "city": "Gyomaendrőd",
       "category": "Vendégház",
-      "status": "new",
-      "channel": "",
+      "status": "later",
+      "channel": "email",
       "followup": "",
-      "lastContact": "",
-      "updatedAt": "2026-09-28T03:55:00+02:00"
+      "lastContact": "2026-09-28",
+      "updatedAt": "2026-09-28T18:55:00+02:00"
     },
     {
       "remoteId": "gyoma-hantosi-harmonia",
@@ -79,29 +87,23 @@
       "channel": "",
       "followup": "",
       "lastContact": "",
-      "updatedAt": "2026-09-28T03:55:00+02:00"
+      "updatedAt": "2026-09-28T18:55:00+02:00"
     },
     {
       "remoteId": "gyoma-hanna-vendeghaz",
       "business": "Hanna Vendégház",
       "city": "Gyomaendrőd",
       "category": "Vendégház",
-      "status": "new",
-      "channel": "",
-      "followup": "",
-      "lastContact": "",
-      "updatedAt": "2026-09-28T03:55:00+02:00"
+      "deleted": true,
+      "updatedAt": "2026-09-28T18:55:00+02:00"
     },
     {
       "remoteId": "gyoma-harang-panzio",
       "business": "Harang Panzió",
       "city": "Gyomaendrőd",
       "category": "Panzió",
-      "status": "new",
-      "channel": "",
-      "followup": "",
-      "lastContact": "",
-      "updatedAt": "2026-09-28T03:55:00+02:00"
+      "deleted": true,
+      "updatedAt": "2026-09-28T18:55:00+02:00"
     },
     {
       "remoteId": "gyoma-mobil-shop",
@@ -112,7 +114,7 @@
       "channel": "",
       "followup": "",
       "lastContact": "",
-      "updatedAt": "2026-09-28T03:55:00+02:00"
+      "updatedAt": "2026-09-28T18:55:00+02:00"
     }
   ]
 }
