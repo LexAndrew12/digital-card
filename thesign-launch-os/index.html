@@ -41,9 +41,28 @@ body{padding-bottom:calc(76px + env(safe-area-inset-bottom))}
 @media(max-width:520px){
 .columns,.grid3{grid-template-columns:1fr}.planDays{grid-template-columns:repeat(3,1fr)}.nav .label{font-size:7.5px}.nav .ico{font-size:15px}
 }
+
+.authGate{position:fixed;inset:0;z-index:200;background:radial-gradient(900px 500px at 80% -10%,rgba(201,255,74,.10),transparent 60%),#0a0b0d;display:none;align-items:center;justify-content:center;padding:22px}
+.authBox{width:min(430px,100%);background:#121419;border:1px solid #2b3039;border-radius:24px;padding:28px;box-shadow:0 30px 100px rgba(0,0,0,.55)}
+.authMark{width:48px;height:48px;border-radius:14px;background:var(--lime);color:#10130b;display:grid;place-items:center;font-weight:950;font-size:20px;margin-bottom:20px}
+.authBox h1{font-size:30px;margin:0 0 10px}.authBox p{font-size:13px;margin-bottom:18px}
+.authGoogle{width:100%;border:0;border-radius:13px;background:#fff;color:#16181c;padding:14px 16px;font-weight:850;cursor:pointer;min-height:50px}
+.authMsg{font-size:11px;color:var(--muted);margin-top:13px;line-height:1.5;min-height:18px}
+.authMsg.error{color:#ff959b}.authMsg.ok{color:var(--lime)}
+.firebaseEnabled .avatar{cursor:pointer}
 </style>
 </head>
 <body>
+<div id="authGate" class="authGate" aria-live="polite">
+  <div class="authBox">
+    <div class="authMark">T</div>
+    <div class="kicker">TheSign Launch OS</div>
+    <h1>Privát munkaterület</h1>
+    <p>Jelentkezz be a saját Google-fiókoddal. A vállalkozási adatok Firestore-ban, jogosultságkezelten tárolódnak.</p>
+    <button id="authGoogleBtn" class="authGoogle">Folytatás Google-fiókkal</button>
+    <div id="authMessage" class="authMsg"></div>
+  </div>
+</div>
 <div class="app">
 <aside class="sidebar">
 <div class="brand"><div class="logo">T</div><div class="txt"><b>TheSign Launch OS</b><small>Vállalkozásindító rendszer</small></div></div>
@@ -196,11 +215,97 @@ body{padding-bottom:calc(76px + env(safe-area-inset-bottom))}
 </div></div>
 
 <datalist id="cityOptions"></datalist><div id="toast" class="toast">Mentve ✓</div>
+<script src="firebase-config.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.19.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.19.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore-compat.js"></script>
 <script>
 (function(){
 const nav=[...document.querySelectorAll(".nav button")], views=[...document.querySelectorAll(".view")], toast=document.getElementById("toast");
 const state=JSON.parse(localStorage.getItem("ts_state")||'{"outreach":[],"days":[],"backlog":[],"leads":[]}');
 state.outreach=state.outreach||[]; state.days=state.days||[]; state.backlog=state.backlog||[]; state.leads=state.leads||[]; state.plan=state.plan||{current:1,completed:[],checks:{}};
+let cloudLoading=false, cloudSaveTimer=null;
+function firebaseEnabled(){return !!(window.THESIGN_FIREBASE&&window.THESIGN_FIREBASE.enabled&&window.firebase)}
+function setAuthMessage(msg,type){
+ const el=document.getElementById("authMessage"); if(!el)return;
+ el.textContent=msg||""; el.className="authMsg"+(type?" "+type:"");
+}
+function scheduleCloudSave(){
+ if(!firebaseEnabled()||cloudLoading||!window.__tsCloud||!window.__tsCloud.user||!window.__tsCloud.ref)return;
+ clearTimeout(cloudSaveTimer);
+ cloudSaveTimer=setTimeout(async()=>{
+  try{
+   await window.__tsCloud.ref.set({state:JSON.parse(JSON.stringify(state)),updatedAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true});
+  }catch(err){console.warn("Cloud save failed",err)}
+ },700);
+}
+async function initFirebaseBridge(){
+ if(!firebaseEnabled())return;
+ document.documentElement.classList.add("firebaseEnabled");
+ const gate=document.getElementById("authGate"),btn=document.getElementById("authGoogleBtn"),avatar=document.querySelector(".avatar");
+ gate.style.display="flex";
+ try{
+  const cfg=window.THESIGN_FIREBASE.config||{};
+  if(!cfg.apiKey||String(cfg.apiKey).startsWith("PASTE_"))throw new Error("A Firebase konfiguráció még nincs kitöltve.");
+  const app=firebase.apps.length?firebase.app():firebase.initializeApp(cfg);
+  const auth=app.auth(),db=app.firestore(),provider=new firebase.auth.GoogleAuthProvider();
+  window.__tsCloud={auth,db,provider,user:null,ref:null};
+  try{await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)}catch(e){console.warn("Auth persistence fallback",e)}
+  btn.addEventListener("click",async()=>{
+   setAuthMessage("Google-belépés megnyitása…");
+   try{await auth.signInWithPopup(provider)}
+   catch(err){
+    if(err&&["auth/popup-blocked","auth/cancelled-popup-request","auth/operation-not-supported-in-this-environment"].includes(err.code)){
+     await auth.signInWithRedirect(provider);
+    }else{setAuthMessage("Belépési hiba: "+(err.message||err),"error")}
+   }
+  });
+  if(avatar){
+   avatar.title="Fiók / kijelentkezés";
+   avatar.addEventListener("click",()=>{if(window.__tsCloud&&window.__tsCloud.user&&confirm("Kijelentkezel a Launch OS-ből?"))auth.signOut()});
+  }
+  auth.onAuthStateChanged(async user=>{
+   window.__tsCloud.user=user||null;
+   window.__tsCloud.ref=null;
+   if(!user){
+    gate.style.display="flex"; setAuthMessage("Jelentkezz be a Launch OS használatához.");
+    if(avatar)avatar.textContent="S";
+    return;
+   }
+   if(avatar)avatar.textContent=(user.displayName||user.email||"S").trim().charAt(0).toUpperCase();
+   setAuthMessage("Adatok ellenőrzése…");
+   const ref=db.collection("users").doc(user.uid).collection("app").doc("state");
+   window.__tsCloud.ref=ref;
+   try{
+    cloudLoading=true;
+    const snap=await ref.get();
+    if(snap.exists&&snap.data()&&snap.data().state){
+     const remote=snap.data().state;
+     Object.keys(state).forEach(k=>delete state[k]);
+     Object.assign(state,remote);
+     state.outreach=state.outreach||[];state.days=state.days||[];state.backlog=state.backlog||[];state.leads=state.leads||[];state.plan=state.plan||{current:1,completed:[],checks:{}};
+     localStorage.setItem("ts_state",JSON.stringify(state));
+     localStorage.setItem("ts_state_saved_at",new Date().toISOString());
+    }else{
+     await ref.set({state:JSON.parse(JSON.stringify(state)),createdAt:firebase.firestore.FieldValue.serverTimestamp(),updatedAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true});
+    }
+    cloudLoading=false;
+    render();renderCityOptions();
+    setAuthMessage("Szinkron kész.","ok");
+    gate.style.display="none";
+   }catch(err){
+    cloudLoading=false;
+    console.warn("Firestore access failed",err);
+    setAuthMessage("Beléptél, de a Firestore hozzáférés még nincs engedélyezve. Ellenőrizd a Security Rules beállítást. "+(err.code||""),"error");
+    gate.style.display="flex";
+   }
+  });
+ }catch(err){
+  setAuthMessage(err.message||String(err),"error");
+  gate.style.display="flex";
+ }
+}
+
 const PLAN=[
 {p:"Alapok",t:"Ajánlat véglegesítése",g:"A termék, ár és ígéret legyen egyértelmű.",c:["Standard kártya: 4 990 Ft","Egyedi kártya: 6 990 Ft","Írd le egy mondatban, mit kap az ügyfél"]},
 {p:"Piac",t:"Első céltelepülés és 10 vállalkozás",g:"Kezdj fókuszált listával, ne végtelen kutatással.",c:["Válaszd ki az első települést","Rögzíts 10 vállalkozást az appban","Ellenőrizd, nincs duplikáció"]},
@@ -260,7 +365,7 @@ function id(){return Date.now().toString(36)+Math.random().toString(36).slice(2,
 function esc(s){return String(s||"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
 function statusText(s){return ({new:"Új",waiting:"Válaszra vár",later:"Follow-up",interested:"Érdekli / demo",no:"Nem érdeklődik",sold:"Megrendelte"})[s]||"Új"}
 function channelText(s){return ({personal:"Személyes",email:"E-mail",messenger:"Messenger",phone:"Telefon",other:"Egyéb"})[s]||""}
-function save(){localStorage.setItem("ts_state",JSON.stringify(state));localStorage.setItem("ts_state_saved_at",new Date().toISOString());render();renderCityOptions();mirrorState()}
+function save(){localStorage.setItem("ts_state",JSON.stringify(state));localStorage.setItem("ts_state_saved_at",new Date().toISOString());render();renderCityOptions();mirrorState();scheduleCloudSave()}
 function ping(msg){toast.textContent=msg||"Mentve ✓";toast.classList.add("show");clearTimeout(window.__t);window.__t=setTimeout(()=>toast.classList.remove("show"),1700)}
 function openView(v){nav.forEach(b=>b.classList.toggle("active",b.dataset.view===v));views.forEach(x=>x.classList.toggle("active",x.id===v));localStorage.setItem("ts_view",v);window.scrollTo(0,0)}
 nav.forEach(b=>b.addEventListener("click",()=>openView(b.dataset.view)));
@@ -387,6 +492,7 @@ document.getElementById("makeSnapshot").addEventListener("click",async()=>{await
 
 
 async function syncRemoteLeads(){
+ if(firebaseEnabled())return;
  try{
   const res=await fetch("data/leads.json?v="+Date.now(),{cache:"no-store"});
   if(!res.ok)throw new Error("HTTP "+res.status);
@@ -442,7 +548,7 @@ async function syncRemoteLeads(){
  }
 }
 
-const last=localStorage.getItem("ts_view");if(last&&document.getElementById(last))openView(last);renderCityOptions();render();initStorage();syncRemoteLeads();
+const last=localStorage.getItem("ts_view");if(last&&document.getElementById(last))openView(last);renderCityOptions();render();initStorage();initFirebaseBridge();syncRemoteLeads();
 })();
 </script>
 </body>
