@@ -27,9 +27,9 @@ h1{font-size:40px;line-height:1.04;margin:9px 0 12px}p{color:#adb3bd;line-height
 .layout{display:grid;grid-template-columns:1.25fr .75fr;gap:16px}.sectionTitle{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.sectionTitle h2{font-size:15px;margin:0}.sectionTitle span{font-size:11px;color:var(--muted)}
 .task{display:grid;grid-template-columns:34px minmax(0,1fr) auto;gap:10px;align-items:center;padding:13px 4px;border-top:1px solid #20242b}.task:first-of-type{border-top:0}.check{width:26px;height:26px;border:1px solid #3c434e;border-radius:8px;background:#15181d;cursor:pointer;display:grid;place-items:center}.check.done{background:var(--lime);border-color:var(--lime);color:#111}.task.done .taskName{text-decoration:line-through;color:#777f8a}.taskName{font-size:14px;font-weight:720}.meta{font-size:11px;color:var(--muted);margin-top:4px}.tag{font-size:10px;padding:5px 8px;border-radius:999px;background:#22272f;color:#c7ccd4}
 .help{background:#16191f;border:1px solid #2b3039;border-radius:17px;padding:17px}.help h3{margin:7px 0 6px;font-size:18px}.help .actions{display:flex;gap:8px;margin-top:15px}.btn{border:1px solid #333945;background:#1a1e24;border-radius:10px;padding:11px 12px;font-size:12px;font-weight:800;cursor:pointer;min-height:44px}.btn.primary{background:var(--lime);color:#111;border-color:var(--lime)}
-.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.metric{background:#15181d;border:1px solid #252a32;border-radius:13px;padding:12px}.metric .n{font-size:21px;font-weight:900}.metric .t{font-size:10px;color:var(--muted);margin-top:3px}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}.metric{background:#15181d;border:1px solid #252a32;border-radius:13px;padding:12px}.metric .n{font-size:21px;font-weight:900}.metric .t{font-size:10px;color:var(--muted);margin-top:3px}
 .list{display:grid;gap:10px}.item{background:#14171c;border:1px solid #252a32;border-radius:15px;padding:15px}.item h3{font-size:14px;margin:0 0 6px}.item p{font-size:12px}.row{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.status{font-size:10px;padding:5px 8px;border-radius:999px;white-space:nowrap;background:#252a31;color:#bbc0c8}.status.hot{background:rgba(255,192,120,.12);color:var(--orange)}
-.columns{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.col{background:#0f1115;border:1px solid #22262e;border-radius:16px;padding:11px;min-height:280px}.colhead{font-size:11px;font-weight:900;color:#cdd1d7;margin-bottom:10px}.lead{background:#15181d;border:1px solid #252a32;border-radius:13px;padding:12px;margin-bottom:8px}.lead h3{font-size:13px;margin:0 0 5px}.lead p{font-size:11px}
+.columns{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.col{background:#0f1115;border:1px solid #22262e;border-radius:16px;padding:11px;min-height:280px}.colhead{font-size:11px;font-weight:900;color:#cdd1d7;margin-bottom:10px}.lead{background:#15181d;border:1px solid #252a32;border-radius:13px;padding:12px;margin-bottom:8px}.lead h3{font-size:13px;margin:0 0 5px}.lead p{font-size:11px}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.quote{font-size:18px;font-weight:900;margin-bottom:8px}.response{margin-top:11px;padding-top:11px;border-top:1px solid #282d35;font-size:12px;line-height:1.5;color:#e2e6eb}.response b{color:var(--lime)}
 .tool{cursor:pointer}.tool .go{color:var(--lime);font-size:11px;font-weight:900;margin-top:14px}.tool:hover{border-color:#3a414c}
 .progress{display:grid;grid-template-columns:1fr 1fr;gap:14px}.bigProgress{font-size:48px;font-weight:950}
@@ -37,7 +37,7 @@ h1{font-size:40px;line-height:1.04;margin:9px 0 12px}p{color:#adb3bd;line-height
 @media(max-width:900px){.app{grid-template-columns:80px 1fr}.brand .txt,.nav .label{display:none}.brand{justify-content:center}.nav button{justify-content:center}.hero,.layout,.progress{grid-template-columns:1fr}.columns,.grid3{grid-template-columns:1fr 1fr}}
 @media(max-width:640px){
 body{padding-bottom:calc(76px + env(safe-area-inset-bottom))}
-.app{display:block}.sidebar{position:fixed;z-index:40;left:0;right:0;bottom:0;top:auto;height:calc(70px + env(safe-area-inset-bottom));padding:7px 8px env(safe-area-inset-bottom);border-right:0;border-top:1px solid var(--line);background:rgba(10,11,13,.97);backdrop-filter:blur(14px)}.brand{display:none}.nav{height:62px;display:grid;grid-template-columns:repeat(6,1fr);gap:2px}.nav button{padding:5px 2px;min-height:54px;justify-content:center;border-radius:10px;flex-direction:column;gap:2px}.nav .ico{font-size:17px}.nav .label{display:block!important;font-size:8.5px;line-height:1;color:#9ca4af}.nav button.active .label{color:#fff}.main{padding:16px 14px 18px}.top{margin-bottom:14px}.crumb{font-size:10px}h1{font-size:30px}.heroCard,.card,.goal{padding:18px;border-radius:18px}.goal .big{font-size:44px}.columns,.grid3,.progress{grid-template-columns:1fr}.task{grid-template-columns:34px minmax(0,1fr)}.task .tag{grid-column:2;justify-self:start}.metrics{grid-template-columns:repeat(3,1fr)}.toast{left:14px;right:14px;bottom:calc(84px + env(safe-area-inset-bottom));text-align:center}
+.app{display:block}.sidebar{position:fixed;z-index:40;left:0;right:0;bottom:0;top:auto;height:calc(70px + env(safe-area-inset-bottom));padding:7px 8px env(safe-area-inset-bottom);border-right:0;border-top:1px solid var(--line);background:rgba(10,11,13,.97);backdrop-filter:blur(14px)}.brand{display:none}.nav{height:62px;display:grid;grid-template-columns:repeat(6,1fr);gap:2px}.nav button{padding:5px 2px;min-height:54px;justify-content:center;border-radius:10px;flex-direction:column;gap:2px}.nav .ico{font-size:17px}.nav .label{display:block!important;font-size:8.5px;line-height:1;color:#9ca4af}.nav button.active .label{color:#fff}.main{padding:16px 14px 18px}.top{margin-bottom:14px}.crumb{font-size:10px}h1{font-size:30px}.heroCard,.card,.goal{padding:18px;border-radius:18px}.goal .big{font-size:44px}.columns,.grid3,.progress{grid-template-columns:1fr}.task{grid-template-columns:34px minmax(0,1fr)}.task .tag{grid-column:2;justify-self:start}.metrics{grid-template-columns:repeat(2,1fr)}.toast{left:14px;right:14px;bottom:calc(84px + env(safe-area-inset-bottom));text-align:center}
 }
 </style>
 </head>
@@ -71,7 +71,7 @@ body{padding-bottom:calc(76px + env(safe-area-inset-bottom))}
 </div>
 <div>
 <div class="help"><div class="kicker">Gyors segítség</div><h3>Mit mondjak elsőre?</h3><p>„Üdv! Zoltai Sándor vagyok. Helyi vállalkozásoknak készítek egyszerű Google értékelő kártyát. Érdekes lehet ez Önnek?”</p><div class="actions"><button class="btn primary" data-go="tools">Segédletek</button><button class="btn" data-go="objections">Kifogások</button></div></div>
-<div class="metrics"><div class="metric"><div class="n" id="metricLeads">12</div><div class="t">lead</div></div><div class="metric"><div class="n" id="metricOutreach">0</div><div class="t">megkeresve</div></div><div class="metric"><div class="n" id="metricLessons">0</div><div class="t">tanulság</div></div></div>
+<div class="metrics"><div class="metric"><div class="n" id="metricLeads">12</div><div class="t">lead</div></div><div class="metric"><div class="n" id="metricOutreach">0</div><div class="t">megkeresve</div></div><div class="metric"><div class="n" id="metricWaiting">0</div><div class="t">válaszra vár</div></div><div class="metric"><div class="n" id="metricLessons">0</div><div class="t">tanulság</div></div></div>
 </div>
 </div>
 </section>
@@ -90,7 +90,8 @@ body{padding-bottom:calc(76px + env(safe-area-inset-bottom))}
 <div class="heroCard" style="margin-bottom:14px"><div class="kicker">Érdeklődők</div><h1>Ne fejben tartsd, hol tartasz.</h1><p>Egy pillantásból lásd, kit választottál ki, kit kerestél meg és kinél van következő lépés.</p></div>
 <div class="columns">
 <div class="col"><div class="colhead">ÚJ</div><div class="lead"><h3>Aranyolló Fodrászat</h3><p>Gyomaendrőd · 28 review</p></div><div class="lead"><h3>Parti Kávézó</h3><p>Szarvas</p></div></div>
-<div class="col"><div class="colhead">MEGKERESVE</div><div class="lead"><h3>BBQ-Bódé</h3><p>Üzenet elküldve · várakozás</p></div></div>
+<div class="col"><div class="colhead">MEGKERESVE</div><div class="lead"><h3>Helyszíni példa</h3><p>Személyes beszélgetés megtörtént</p></div></div>
+<div class="col"><div class="colhead">VÁLASZRA VÁR</div><div class="lead"><h3>BBQ-Bódé</h3><p>Messenger · üzenet elküldve</p></div></div>
 <div class="col"><div class="colhead">DEMO / ÉRDEKLŐDIK</div><div class="lead"><h3>FreshCar</h3><p>Demo után árkérdés · follow-up</p></div></div>
 <div class="col"><div class="colhead">LEZÁRVA</div><div class="lead"><h3>Minta Szalon</h3><p>Nem releváns jelenleg.</p></div></div>
 </div>
@@ -129,7 +130,7 @@ body{padding-bottom:calc(76px + env(safe-area-inset-bottom))}
 <div class="modalBack" id="outreachModal"><div class="modal">
 <div class="kicker">Megkeresés rögzítése</div><h2>Mi történt?</h2>
 <label>Vállalkozás</label><input id="outBusiness" placeholder="pl. Minta Fodrászat">
-<label>Eredmény</label><select id="outResult"><option value="no">Nem érdeklődik</option><option value="later">Később / follow-up</option><option value="interested">Érdekli / demo</option><option value="sold">Megrendelte</option></select>
+<label>Megkeresés módja</label><select id="outChannel"><option value="personal">Személyesen</option><option value="email">E-mail</option><option value="messenger">Messenger</option><option value="phone">Telefon</option><option value="other">Egyéb</option></select><label>Státusz</label><select id="outResult"><option value="waiting">Válaszra vár</option><option value="no">Nem érdeklődik</option><option value="later">Később / follow-up</option><option value="interested">Érdekli / demo</option><option value="sold">Megrendelte</option></select><label>Follow-up dátum</label><input id="outFollowup" type="date">
 <label>Kifogás / reakció</label><input id="outObjection" placeholder="pl. Drágának tűnik">
 <label>Mit tanultál?</label><textarea id="outLesson" placeholder="Egy mondat is elég."></textarea>
 <div class="modalActions"><button class="btn modalClose" data-close="outreachModal">Mégse</button><button class="btn modalSave" id="saveOutreach">Mentés</button></div>
@@ -161,10 +162,10 @@ document.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=
 const last=localStorage.getItem("ts_view"); if(last && document.getElementById(last)) openView(last);
 
 function render(){
- const n=state.outreach.length, interested=state.outreach.filter(x=>x.result==="interested"||x.result==="sold").length;
+ const n=state.outreach.length, interested=state.outreach.filter(x=>x.result==="interested"||x.result==="sold").length, waiting=state.outreach.filter(x=>x.result==="waiting").length;
  document.getElementById("outreachCount").textContent=Math.min(n,3);
  document.getElementById("missionFill").style.width=Math.min(100,n/3*100)+"%";
- document.getElementById("metricOutreach").textContent=n;
+ document.getElementById("metricOutreach").textContent=n; document.getElementById("metricWaiting").textContent=waiting;
  document.getElementById("progressOutreach").textContent=n;
  document.getElementById("progressInterested").textContent=interested;
  document.getElementById("metricLessons").textContent=state.outreach.filter(x=>x.lesson&&x.lesson.trim()).length;
@@ -181,9 +182,12 @@ document.querySelectorAll("[data-close]").forEach(b=>b.addEventListener("click",
 document.querySelectorAll(".modalBack").forEach(m=>m.addEventListener("click",e=>{if(e.target===m)m.classList.remove("open")}));
 
 document.getElementById("logOutreach").addEventListener("click",()=>openModal("outreachModal"));
+document.getElementById("outChannel").addEventListener("change",e=>{
+  if(e.target.value==="email"||e.target.value==="messenger") document.getElementById("outResult").value="waiting";
+});
 document.getElementById("saveOutreach").addEventListener("click",()=>{
- const item={business:document.getElementById("outBusiness").value.trim(),result:document.getElementById("outResult").value,objection:document.getElementById("outObjection").value.trim(),lesson:document.getElementById("outLesson").value.trim(),at:new Date().toISOString()};
- state.outreach.push(item); save(); ["outBusiness","outObjection","outLesson"].forEach(id=>document.getElementById(id).value=""); closeModal("outreachModal"); ping("Megkeresés rögzítve ✓");
+ const item={business:document.getElementById("outBusiness").value.trim(),channel:document.getElementById("outChannel").value,result:document.getElementById("outResult").value,followup:document.getElementById("outFollowup").value,objection:document.getElementById("outObjection").value.trim(),lesson:document.getElementById("outLesson").value.trim(),at:new Date().toISOString()};
+ state.outreach.push(item); save(); ["outBusiness","outObjection","outLesson","outFollowup"].forEach(id=>document.getElementById(id).value=""); closeModal("outreachModal"); ping("Megkeresés rögzítve ✓");
 });
 document.getElementById("closeDay").addEventListener("click",()=>{
  const last=state.days[state.days.length-1]||{}; document.getElementById("dayGood").value=last.good||"";document.getElementById("dayHard").value=last.hard||"";document.getElementById("dayNext").value="";openModal("dayModal")
