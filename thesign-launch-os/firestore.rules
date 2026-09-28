@@ -1,0 +1,20 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Replace YOUR_GOOGLE_EMAIL with the Google account that may use Launch OS.
+    function isOwner() {
+      return request.auth != null
+        && request.auth.token.email_verified == true
+        && request.auth.token.email == "YOUR_GOOGLE_EMAIL";
+    }
+
+    match /users/{userId}/{document=**} {
+      allow read, write: if isOwner() && request.auth.uid == userId;
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
