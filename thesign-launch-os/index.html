@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0a0b0d">
+<title>TheSign Launch OS</title>
+<style>
+:root{--bg:#0a0b0d;--panel:#121419;--panel2:#171a20;--line:#272c35;--text:#f5f6f7;--muted:#9299a5;--lime:#c9ff4a;--blue:#86a9ff;--red:#ff737b;--orange:#ffc078;--r:18px}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{background:var(--bg)}
+body{margin:0;background:radial-gradient(900px 500px at 85% -8%,rgba(201,255,74,.08),transparent 58%),var(--bg);color:var(--text);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:-.01em}
+button{font:inherit;color:inherit;touch-action:manipulation}
+.app{min-height:100vh;display:grid;grid-template-columns:240px minmax(0,1fr)}
+.sidebar{position:sticky;top:0;height:100vh;border-right:1px solid var(--line);padding:22px 16px;background:rgba(8,9,11,.94)}
+.brand{display:flex;align-items:center;gap:11px;margin:0 7px 25px}.logo{width:38px;height:38px;border-radius:12px;background:var(--lime);color:#0b0d0e;display:grid;place-items:center;font-weight:900}.brand b{font-size:14px}.brand small{display:block;color:var(--muted);font-size:11px;margin-top:2px}
+.nav{display:flex;flex-direction:column;gap:6px}.nav button{border:0;background:transparent;text-align:left;padding:12px 13px;border-radius:12px;color:#adb3bd;cursor:pointer;display:flex;align-items:center;gap:10px;min-height:46px}.nav button.active{background:#1a1e24;color:#fff}.nav .ico{width:20px;text-align:center}
+.main{width:100%;max-width:1420px;margin:auto;padding:24px 30px 60px}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}.crumb{font-size:12px;color:var(--muted);letter-spacing:.08em}.avatar{width:34px;height:34px;border:1px solid #343a45;border-radius:50%;display:grid;place-items:center;background:#20242b;font-weight:800}
+.view{display:none}.view.active{display:block}
+.hero{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(280px,.55fr);gap:16px;margin-bottom:16px}
+.card,.heroCard{background:linear-gradient(145deg,#15181d,#111316);border:1px solid var(--line);border-radius:22px;padding:24px}
+.kicker{font-size:11px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:var(--lime)}
+h1{font-size:40px;line-height:1.04;margin:9px 0 12px}p{color:#adb3bd;line-height:1.55;margin:0}
+.goal{background:var(--lime);color:#11150c;border-radius:22px;padding:24px;display:flex;flex-direction:column;justify-content:space-between}.goal small{font-weight:900;text-transform:uppercase;letter-spacing:.1em;opacity:.65}.goal .big{font-size:55px;font-weight:950;line-height:1;margin:14px 0 5px}.goal b{font-size:18px}.goal p{color:#273015;font-size:12px;margin-top:7px}.goal button{margin-top:18px;border:0;background:#111;color:white;border-radius:12px;padding:13px 15px;font-weight:850;cursor:pointer;min-height:46px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}.chip{font-size:12px;border:1px solid #2c313a;padding:8px 10px;border-radius:999px;color:#c8cdd5;background:#15191f}
+.layout{display:grid;grid-template-columns:1.25fr .75fr;gap:16px}.sectionTitle{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.sectionTitle h2{font-size:15px;margin:0}.sectionTitle span{font-size:11px;color:var(--muted)}
+.task{display:grid;grid-template-columns:34px minmax(0,1fr) auto;gap:10px;align-items:center;padding:13px 4px;border-top:1px solid #20242b}.task:first-of-type{border-top:0}.check{width:26px;height:26px;border:1px solid #3c434e;border-radius:8px;background:#15181d;cursor:pointer;display:grid;place-items:center}.check.done{background:var(--lime);border-color:var(--lime);color:#111}.task.done .taskName{text-decoration:line-through;color:#777f8a}.taskName{font-size:14px;font-weight:720}.meta{font-size:11px;color:var(--muted);margin-top:4px}.tag{font-size:10px;padding:5px 8px;border-radius:999px;background:#22272f;color:#c7ccd4}
+.help{background:#16191f;border:1px solid #2b3039;border-radius:17px;padding:17px}.help h3{margin:7px 0 6px;font-size:18px}.help .actions{display:flex;gap:8px;margin-top:15px}.btn{border:1px solid #333945;background:#1a1e24;border-radius:10px;padding:11px 12px;font-size:12px;font-weight:800;cursor:pointer;min-height:44px}.btn.primary{background:var(--lime);color:#111;border-color:var(--lime)}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.metric{background:#15181d;border:1px solid #252a32;border-radius:13px;padding:12px}.metric .n{font-size:21px;font-weight:900}.metric .t{font-size:10px;color:var(--muted);margin-top:3px}
+.list{display:grid;gap:10px}.item{background:#14171c;border:1px solid #252a32;border-radius:15px;padding:15px}.item h3{font-size:14px;margin:0 0 6px}.item p{font-size:12px}.row{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.status{font-size:10px;padding:5px 8px;border-radius:999px;white-space:nowrap;background:#252a31;color:#bbc0c8}.status.hot{background:rgba(255,192,120,.12);color:var(--orange)}
+.columns{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.col{background:#0f1115;border:1px solid #22262e;border-radius:16px;padding:11px;min-height:280px}.colhead{font-size:11px;font-weight:900;color:#cdd1d7;margin-bottom:10px}.lead{background:#15181d;border:1px solid #252a32;border-radius:13px;padding:12px;margin-bottom:8px}.lead h3{font-size:13px;margin:0 0 5px}.lead p{font-size:11px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.quote{font-size:18px;font-weight:900;margin-bottom:8px}.response{margin-top:11px;padding-top:11px;border-top:1px solid #282d35;font-size:12px;line-height:1.5;color:#e2e6eb}.response b{color:var(--lime)}
+.tool{cursor:pointer}.tool .go{color:var(--lime);font-size:11px;font-weight:900;margin-top:14px}.tool:hover{border-color:#3a414c}
+.progress{display:grid;grid-template-columns:1fr 1fr;gap:14px}.bigProgress{font-size:48px;font-weight:950}
+.toast{position:fixed;right:20px;bottom:20px;background:#eff9d8;color:#162009;border-radius:12px;padding:12px 15px;font-size:12px;font-weight:900;opacity:0;transform:translateY(10px);transition:.2s;pointer-events:none;z-index:99}.toast.show{opacity:1;transform:none}
+@media(max-width:900px){.app{grid-template-columns:80px 1fr}.brand .txt,.nav .label{display:none}.brand{justify-content:center}.nav button{justify-content:center}.hero,.layout,.progress{grid-template-columns:1fr}.columns,.grid3{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){
+body{padding-bottom:calc(76px + env(safe-area-inset-bottom))}
+.app{display:block}.sidebar{position:fixed;z-index:40;left:0;right:0;bottom:0;top:auto;height:calc(70px + env(safe-area-inset-bottom));padding:7px 8px env(safe-area-inset-bottom);border-right:0;border-top:1px solid var(--line);background:rgba(10,11,13,.97);backdrop-filter:blur(14px)}.brand{display:none}.nav{height:62px;display:grid;grid-template-columns:repeat(6,1fr);gap:2px}.nav button{padding:8px 3px;min-height:54px;justify-content:center;border-radius:10px}.nav .ico{font-size:18px}.main{padding:16px 14px 18px}.top{margin-bottom:14px}.crumb{font-size:10px}h1{font-size:30px}.heroCard,.card,.goal{padding:18px;border-radius:18px}.goal .big{font-size:44px}.columns,.grid3,.progress{grid-template-columns:1fr}.task{grid-template-columns:34px minmax(0,1fr)}.task .tag{grid-column:2;justify-self:start}.metrics{grid-template-columns:repeat(3,1fr)}.toast{left:14px;right:14px;bottom:calc(84px + env(safe-area-inset-bottom));text-align:center}
+}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+<div class="brand"><div class="logo">T</div><div class="txt"><b>TheSign Launch OS</b><small>Vállalkozásindító rendszer</small></div></div>
+<nav class="nav">
+<button class="active" data-view="today" aria-label="Ma"><span class="ico">◉</span><span class="label">Ma</span></button>
+<button data-view="backlog" aria-label="Backlog"><span class="ico">≡</span><span class="label">Backlog</span></button>
+<button data-view="leads" aria-label="Érdeklődők"><span class="ico">◎</span><span class="label">Érdeklődők</span></button>
+<button data-view="objections" aria-label="Kifogások"><span class="ico">↯</span><span class="label">Kifogások</span></button>
+<button data-view="tools" aria-label="Segédletek"><span class="ico">◇</span><span class="label">Segédletek</span></button>
+<button data-view="progress" aria-label="Haladás"><span class="ico">↗</span><span class="label">Haladás</span></button>
+</nav>
+</aside>
+<main class="main">
+<div class="top"><div class="crumb">THE SIGN / INDULÁS</div><div class="avatar">S</div></div>
+
+<section class="view active" id="today">
+<div class="hero">
+<div class="heroCard"><div class="kicker">Mai fókusz</div><h1>Ne üzletet építs ma.<br>Szerezz 3 valódi reakciót.</h1><p>A cél nem az azonnali eladás. Hajtsd végre a folyamatot, rögzítsd a reakciókat és tanulj belőlük.</p><div class="chips"><span class="chip"><b>3</b> megkeresés</span><span class="chip"><b>1</b> demo</span><span class="chip"><b>0</b> kötelező eladás</span></div></div>
+<div class="goal"><div><small>Mai küldetés</small><div class="big">3/3</div><b>megkeresés = sikeres nap</b><p>Az eredményt nem kontrollálod. A végrehajtást igen.</p></div><button id="closeDay">Nap lezárása →</button></div>
+</div>
+<div class="layout">
+<div class="card"><div class="sectionTitle"><h2>Mai feladatok</h2><span>4 feladat</span></div>
+<div class="task"><button class="check" aria-label="Feladat kész">✓</button><div><div class="taskName">Válassz ki 3 helyi vállalkozást</div><div class="meta">Ne optimalizálj túl — válassz és haladj.</div></div><span class="tag">10 perc</span></div>
+<div class="task"><button class="check" aria-label="Feladat kész">✓</button><div><div class="taskName">Keress meg 3 vállalkozást</div><div class="meta">Személyesen vagy üzenetben.</div></div><span class="tag">Fókusz</span></div>
+<div class="task"><button class="check" aria-label="Feladat kész">✓</button><div><div class="taskName">Rögzítsd a reakciókat</div><div class="meta">Válasz, kifogás, következő lépés.</div></div><span class="tag">10 perc</span></div>
+<div class="task"><button class="check" aria-label="Feladat kész">✓</button><div><div class="taskName">Írj le 1 tanulságot</div><div class="meta">Mi működött ma jobban?</div></div><span class="tag">5 perc</span></div>
+</div>
+<div>
+<div class="help"><div class="kicker">Gyors segítség</div><h3>Mit mondjak elsőre?</h3><p>„Üdv! Zoltai Sándor vagyok. Helyi vállalkozásoknak készítek egyszerű Google értékelő kártyát. Érdekes lehet ez Önnek?”</p><div class="actions"><button class="btn primary" data-go="tools">Segédletek</button><button class="btn" data-go="objections">Kifogások</button></div></div>
+<div class="metrics"><div class="metric"><div class="n">12</div><div class="t">lead</div></div><div class="metric"><div class="n">4</div><div class="t">megkeresve</div></div><div class="metric"><div class="n">3</div><div class="t">tanulság</div></div></div>
+</div>
+</div>
+</section>
+
+<section class="view" id="backlog">
+<div class="heroCard" style="margin-bottom:14px"><div class="kicker">Backlog</div><h1>Ami nem fért bele, nem kudarc.</h1><p>Itt parkol minden, amit nem akarsz elveszíteni, de ma nem kell elvégezned.</p></div>
+<div class="card"><div class="sectionTitle"><h2>Nyitott feladatok</h2><span>4 elem</span></div><div class="list">
+<div class="item"><div class="row"><div><h3>Standard kártya végleges fotózása</h3><p>3 használható termékfotó természetes fényben.</p></div><span class="status hot">Következő</span></div></div>
+<div class="item"><div class="row"><div><h3>3 mm-es sarokkerekítő beszerzése</h3><p>Gyártási minőség javítása; jelenleg nem blokkol.</p></div><span class="status">Később</span></div></div>
+<div class="item"><div class="row"><div><h3>Egylapos árlista elkészítése</h3><p>Standard 4 990 Ft / Egyedi 6 990 Ft.</p></div><span class="status hot">Fontos</span></div></div>
+<div class="item"><div class="row"><div><h3>Kifogásokból válasz-sablon</h3><p>Drága, megcsinálom magam, nem érdekel.</p></div><span class="status">Később</span></div></div>
+</div></div>
+</section>
+
+<section class="view" id="leads">
+<div class="heroCard" style="margin-bottom:14px"><div class="kicker">Érdeklődők</div><h1>Ne fejben tartsd, hol tartasz.</h1><p>Egy pillantásból lásd, kit választottál ki, kit kerestél meg és kinél van következő lépés.</p></div>
+<div class="columns">
+<div class="col"><div class="colhead">ÚJ</div><div class="lead"><h3>Aranyolló Fodrászat</h3><p>Gyomaendrőd · 28 review</p></div><div class="lead"><h3>Parti Kávézó</h3><p>Szarvas</p></div></div>
+<div class="col"><div class="colhead">MEGKERESVE</div><div class="lead"><h3>BBQ-Bódé</h3><p>Üzenet elküldve · várakozás</p></div></div>
+<div class="col"><div class="colhead">DEMO / ÉRDEKLŐDIK</div><div class="lead"><h3>FreshCar</h3><p>Demo után árkérdés · follow-up</p></div></div>
+<div class="col"><div class="colhead">LEZÁRVA</div><div class="lead"><h3>Minta Szalon</h3><p>Nem releváns jelenleg.</p></div></div>
+</div>
+</section>
+
+<section class="view" id="objections">
+<div class="heroCard" style="margin-bottom:14px"><div class="kicker">Kifogáskönyvtár</div><h1>A „nem” adat. Nem ítélet.</h1><p>Értsd meg, mi lehet a mondat mögött, kérdezz vissza, és tudd, mikor kell lezárni.</p></div>
+<div class="grid3">
+<div class="item"><div class="quote">„Nem érdekel.”</div><p>Lehet reflex vagy valódi érdektelenség.</p><div class="response"><b>Válasz:</b> „Rendben. Egy gyors kérdés: maga a Google-értékelések gyűjtése nem fontos, vagy egyszerűen most nem aktuális?”</div></div>
+<div class="item"><div class="quote">„Ez drága.”</div><p>Előbb derítsd ki, mihez képest.</p><div class="response"><b>Válasz:</b> „Értem. Mi lenne az az árszint, amit ön reálisnak érezne ezért?”</div></div>
+<div class="item"><div class="quote">„Megcsinálom magam.”</div><p>Lehet, hogy tényleg meg tudja.</p><div class="response"><b>Válasz:</b> „Teljesen rendben. Nálam főleg azt fizeti meg, hogy készre kapja és ne kelljen vele foglalkoznia.”</div></div>
+<div class="item"><div class="quote">„Humbug.”</div><p>Ne a sértő szóra reagálj.</p><div class="response"><b>Válasz:</b> „Értem. Mi az, ami ebből önnek humbugnak tűnik?”</div></div>
+<div class="item"><div class="quote">„Van már QR-kódunk.”</div><p>Ez információ, nem vereség.</p><div class="response"><b>Válasz:</b> „Szuper. Mennyire használják ténylegesen a vendégek?”</div></div>
+<div class="item"><div class="quote">„Ne zaklasson.”</div><p>Itt nincs második kör.</p><div class="response"><b>Válasz:</b> „Rendben, elnézést a zavarásért. Nem keresem többet.”</div></div>
+</div>
+</section>
+
+<section class="view" id="tools">
+<div class="heroCard" style="margin-bottom:14px"><div class="kicker">Segédletek</div><h1>Pont azt kapd meg, amire most szükséged van.</h1><p>Checklist, szöveg, reakcióminta vagy rövid instrukció.</p></div>
+<div class="grid3">
+<div class="item tool"><h3>Első megkeresés — 30 mp</h3><p>Nyitómondat, kérdés és mikor állj meg.</p><div class="go">MEGNYITÁS →</div></div>
+<div class="item tool"><h3>Google profil gyorscheck</h3><p>Nem SEO audit. Csak alapvető kontextus.</p><div class="go">CHECKLIST →</div></div>
+<div class="item tool"><h3>Kifogáskezelő</h3><p>A leggyakoribb mondatok és természetes válaszok.</p><div class="go">MEGNYITÁS →</div></div>
+<div class="item tool"><h3>Demo forgatókönyv</h3><p>20 másodperces NFC demo túleladás nélkül.</p><div class="go">MEGNYITÁS →</div></div>
+<div class="item tool"><h3>Gyártási workflow</h3><p>Dahle 502 → 3 mm sarok → pozicionálás → hinge method.</p><div class="go">MEGNYITÁS →</div></div>
+<div class="item tool"><h3>Napi lezárás</h3><p>3 kérdés, hogy a tapasztalat ne vesszen el.</p><div class="go">MEGNYITÁS →</div></div>
+</div>
+</section>
+
+<section class="view" id="progress">
+<div class="heroCard" style="margin-bottom:14px"><div class="kicker">Haladás</div><h1>Ne csak az eredményt mérd. Mérd a végrehajtást is.</h1><p>A rendszer külön kezeli azt, amit kontrollálsz, és azt, amit nem.</p></div>
+<div class="progress"><div class="card"><div class="kicker">Folyamat</div><div class="bigProgress">11</div><h3>végrehajtott megkeresés</h3><p>A sikeres nap: végrehajtottad a vállalt lépéseket és rögzítettél legalább egy tanulságot.</p></div><div class="card"><div class="kicker">Eredmény</div><div class="bigProgress">2</div><h3>komoly érdeklődő</h3><p>Ez üzleti eredmény, nem az önértékelésed mérőszáma.</p></div></div>
+</section>
+</main>
+</div>
+<div id="toast" class="toast">Mentve ✓</div>
+<script>
+(function(){
+const nav=[...document.querySelectorAll(".nav button")];
+const views=[...document.querySelectorAll(".view")];
+const toast=document.getElementById("toast");
+function ping(msg){toast.textContent=msg||"Mentve ✓";toast.classList.add("show");clearTimeout(window.__t);window.__t=setTimeout(()=>toast.classList.remove("show"),1300)}
+function openView(id){nav.forEach(b=>b.classList.toggle("active",b.dataset.view===id));views.forEach(v=>v.classList.toggle("active",v.id===id));window.scrollTo(0,0)}
+nav.forEach(b=>b.addEventListener("click",()=>openView(b.dataset.view)));
+document.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>openView(b.dataset.go)));
+document.querySelectorAll(".check").forEach((b,i)=>{const k="ts_task_"+i;if(localStorage.getItem(k)==="1"){b.classList.add("done");b.closest(".task").classList.add("done")}b.addEventListener("click",()=>{const d=b.classList.toggle("done");b.closest(".task").classList.toggle("done",d);localStorage.setItem(k,d?"1":"0");ping(d?"Feladat kész ✓":"Visszaállítva")})});
+document.getElementById("closeDay").addEventListener("click",()=>ping("Nap lezárva — szép munka."));
+document.querySelectorAll(".tool").forEach(t=>t.addEventListener("click",()=>ping("Prototípus: segédlet megnyitva")));
+})();
+</script>
+</body>
+</html>
