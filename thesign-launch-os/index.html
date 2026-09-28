@@ -291,20 +291,10 @@ async function initFirebaseBridge(){
     }
     cloudLoading=false;
     render();renderCityOptions();
-    // One-time Firestore sync test lead. Remove after verification.
-    if(!state.leads.some(l=>norm(l.business)==="teszt ceg"&&norm(l.city)==="gyomaendrod")){
-      state.leads.push({
-        id:id(),
-        business:"TESZT CÉG",
-        city:"Gyomaendrőd",
-        contact:"",
-        note:"Egyszeri Firestore szinkronteszt",
-        status:"new",
-        channel:"",
-        followup:"",
-        lastContact:"",
-        history:[]
-      });
+    // One-time cleanup after successful Firestore verification.
+    const beforeCount=state.leads.length;
+    state.leads=state.leads.filter(l=>!(norm(l.business)==="teszt ceg"&&norm(l.city)==="gyomaendrod"));
+    if(state.leads.length!==beforeCount){
       await ref.set({state:JSON.parse(JSON.stringify(state)),updatedAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true});
       localStorage.setItem("ts_state",JSON.stringify(state));
       localStorage.setItem("ts_state_saved_at",new Date().toISOString());
