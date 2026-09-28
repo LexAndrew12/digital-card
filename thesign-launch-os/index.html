@@ -300,6 +300,24 @@ async function initFirebaseBridge(){
       localStorage.setItem("ts_state_saved_at",new Date().toISOString());
       render();renderCityOptions();
     }
+    if(!state.leads.some(l=>norm(l.business)==="szinkron teszt 2"&&norm(l.city)==="gyomaendrod")){
+      state.leads.push({
+        id:id(),
+        business:"SZINKRON TESZT 2",
+        city:"Gyomaendrőd",
+        contact:"",
+        note:"Második böngészők közötti Firestore szinkronteszt",
+        status:"new",
+        channel:"",
+        followup:"",
+        lastContact:"",
+        history:[]
+      });
+      await ref.set({state:JSON.parse(JSON.stringify(state)),updatedAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true});
+      localStorage.setItem("ts_state",JSON.stringify(state));
+      localStorage.setItem("ts_state_saved_at",new Date().toISOString());
+      render();renderCityOptions();
+    }
     setAuthMessage("Szinkron kész.","ok");
     gate.style.display="none";
    }catch(err){
