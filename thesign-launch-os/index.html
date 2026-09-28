@@ -32,12 +32,12 @@ h1{font-size:40px;line-height:1.04;margin:9px 0 12px}p{color:#adb3bd;line-height
 .columns{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.col{background:#0f1115;border:1px solid #22262e;border-radius:16px;padding:11px;min-height:280px}.colhead{font-size:11px;font-weight:900;color:#cdd1d7;margin-bottom:10px}.lead{background:#15181d;border:1px solid #252a32;border-radius:13px;padding:12px;margin-bottom:8px}.lead h3{font-size:13px;margin:0 0 5px}.lead p{font-size:11px}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.quote{font-size:18px;font-weight:900;margin-bottom:8px}.response{margin-top:11px;padding-top:11px;border-top:1px solid #282d35;font-size:12px;line-height:1.5;color:#e2e6eb}.response b{color:var(--lime)}
 .tool{cursor:pointer}.tool .go{color:var(--lime);font-size:11px;font-weight:900;margin-top:14px}.tool:hover{border-color:#3a414c}
-.progress{display:grid;grid-template-columns:1fr 1fr;gap:14px}.bigProgress{font-size:48px;font-weight:950}
+.progress{display:grid;grid-template-columns:1fr 1fr;gap:14px}.bigProgress{font-size:48px;font-weight:950}.dashMetrics{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:14px 0}.dashMetric{background:#14171c;border:1px solid #252a32;border-radius:16px;padding:16px}.dashMetric .n{font-size:28px;font-weight:950}.dashMetric .t{font-size:11px;color:var(--muted);margin-top:4px}.cityGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.cityCard{background:#111419;border:1px solid #252b34;border-radius:17px;padding:16px}.cityHead{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:12px}.cityHead h3{margin:0;font-size:15px}.cityHead span{font-size:11px;color:var(--muted)}.cityStats{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.cityStat{background:#181c22;border-radius:10px;padding:9px 7px}.cityStat b{display:block;font-size:16px}.cityStat span{font-size:9px;color:#9299a5}.toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:12px}.toolbar input,.toolbar select{background:#0f1216;color:#f5f6f7;border:1px solid #2d333d;border-radius:11px;padding:11px 12px;font:inherit;min-height:42px}.toolbar input{flex:1;min-width:180px}.leadTable{display:grid;gap:8px}.leadRow{display:grid;grid-template-columns:minmax(0,1.4fr) .8fr .8fr .8fr auto;gap:10px;align-items:center;background:#13161b;border:1px solid #252b33;border-radius:14px;padding:12px 13px}.leadRow strong{font-size:13px}.leadRow .sub{font-size:10px;color:var(--muted);margin-top:3px}.pill{font-size:10px;padding:5px 8px;border-radius:999px;background:#242a31;color:#c7cdd5;white-space:nowrap}.pill.waiting{background:rgba(134,169,255,.13);color:#a9c0ff}.pill.interested{background:rgba(201,255,74,.12);color:#d6ff79}.pill.no{background:rgba(255,115,123,.12);color:#ff959b}.pill.sold{background:rgba(201,255,74,.2);color:#e1ff9e}.followupBox{margin-top:14px}.empty{padding:20px;border:1px dashed #313741;border-radius:14px;color:#858d99;text-align:center;font-size:12px}
 .toast{position:fixed;right:20px;bottom:20px;background:#eff9d8;color:#162009;border-radius:12px;padding:12px 15px;font-size:12px;font-weight:900;opacity:0;transform:translateY(10px);transition:.2s;pointer-events:none;z-index:99}.toast.show{opacity:1;transform:none}.progressbar{height:6px;background:#242a32;border-radius:99px;overflow:hidden;margin-top:12px}.progressfill{height:100%;width:0;background:#111;border-radius:99px;transition:.25s}.iconBtn{border:1px solid #343a45;background:#171b21;color:#e8ebef;border-radius:10px;padding:9px 11px;font-size:11px;font-weight:800;cursor:pointer;min-height:40px}.modalBack{position:fixed;inset:0;background:rgba(0,0,0,.68);backdrop-filter:blur(7px);z-index:80;display:none;align-items:flex-end;justify-content:center;padding:18px}.modalBack.open{display:flex}.modal{width:min(560px,100%);max-height:88vh;overflow:auto;background:#12151a;border:1px solid #303640;border-radius:22px;padding:20px;box-shadow:0 30px 90px rgba(0,0,0,.55)}.modal h2{margin:4px 0 8px;font-size:22px}.modal label{display:block;font-size:11px;color:#aeb5c0;margin:14px 0 6px}.modal input,.modal select,.modal textarea{width:100%;background:#0e1014;color:#f5f6f7;border:1px solid #303640;border-radius:11px;padding:12px;font:inherit;outline:none}.modal textarea{min-height:86px;resize:vertical}.modalActions{display:flex;gap:8px;justify-content:flex-end;margin-top:16px}.modalClose{background:transparent;border:1px solid #343a45}.modalSave{background:var(--lime);color:#10130b;border:0}.inlineActions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.miniNote{font-size:11px;color:#8f97a3;margin-top:8px}
-@media(max-width:900px){.app{grid-template-columns:80px 1fr}.brand .txt,.nav .label{display:none}.brand{justify-content:center}.nav button{justify-content:center}.hero,.layout,.progress{grid-template-columns:1fr}.columns,.grid3{grid-template-columns:1fr 1fr}}
+@media(max-width:900px){.app{grid-template-columns:80px 1fr}.brand .txt,.nav .label{display:none}.brand{justify-content:center}.nav button{justify-content:center}.hero,.layout,.progress{grid-template-columns:1fr}.columns,.grid3{grid-template-columns:1fr 1fr}.dashMetrics{grid-template-columns:repeat(3,1fr)}.cityGrid{grid-template-columns:1fr 1fr}.leadRow{grid-template-columns:1fr 1fr}.leadRow .leadActions{grid-column:1/-1}}
 @media(max-width:640px){
 body{padding-bottom:calc(76px + env(safe-area-inset-bottom))}
-.app{display:block}.sidebar{position:fixed;z-index:40;left:0;right:0;bottom:0;top:auto;height:calc(70px + env(safe-area-inset-bottom));padding:7px 8px env(safe-area-inset-bottom);border-right:0;border-top:1px solid var(--line);background:rgba(10,11,13,.97);backdrop-filter:blur(14px)}.brand{display:none}.nav{height:62px;display:grid;grid-template-columns:repeat(6,1fr);gap:2px}.nav button{padding:5px 2px;min-height:54px;justify-content:center;border-radius:10px;flex-direction:column;gap:2px}.nav .ico{font-size:17px}.nav .label{display:block!important;font-size:8.5px;line-height:1;color:#9ca4af}.nav button.active .label{color:#fff}.main{padding:16px 14px 18px}.top{margin-bottom:14px}.crumb{font-size:10px}h1{font-size:30px}.heroCard,.card,.goal{padding:18px;border-radius:18px}.goal .big{font-size:44px}.columns,.grid3,.progress{grid-template-columns:1fr}.task{grid-template-columns:34px minmax(0,1fr)}.task .tag{grid-column:2;justify-self:start}.metrics{grid-template-columns:repeat(2,1fr)}.toast{left:14px;right:14px;bottom:calc(84px + env(safe-area-inset-bottom));text-align:center}
+.app{display:block}.sidebar{position:fixed;z-index:40;left:0;right:0;bottom:0;top:auto;height:calc(70px + env(safe-area-inset-bottom));padding:7px 8px env(safe-area-inset-bottom);border-right:0;border-top:1px solid var(--line);background:rgba(10,11,13,.97);backdrop-filter:blur(14px)}.brand{display:none}.nav{height:62px;display:grid;grid-template-columns:repeat(6,1fr);gap:2px}.nav button{padding:5px 2px;min-height:54px;justify-content:center;border-radius:10px;flex-direction:column;gap:2px}.nav .ico{font-size:17px}.nav .label{display:block!important;font-size:8.5px;line-height:1;color:#9ca4af}.nav button.active .label{color:#fff}.main{padding:16px 14px 18px}.top{margin-bottom:14px}.crumb{font-size:10px}h1{font-size:30px}.heroCard,.card,.goal{padding:18px;border-radius:18px}.goal .big{font-size:44px}.columns,.grid3,.progress{grid-template-columns:1fr}.task{grid-template-columns:34px minmax(0,1fr)}.task .tag{grid-column:2;justify-self:start}.metrics{grid-template-columns:repeat(2,1fr)}.dashMetrics{grid-template-columns:repeat(2,1fr)}.cityGrid{grid-template-columns:1fr}.leadRow{grid-template-columns:1fr}.leadRow .leadActions{grid-column:auto}.toolbar{align-items:stretch}.toolbar input,.toolbar select,.toolbar button{width:100%}.toast{left:14px;right:14px;bottom:calc(84px + env(safe-area-inset-bottom));text-align:center}
 }
 </style>
 </head>
@@ -51,7 +51,7 @@ body{padding-bottom:calc(76px + env(safe-area-inset-bottom))}
 <button data-view="leads" aria-label="Érdeklődők"><span class="ico">◎</span><span class="label">Érdeklődők</span></button>
 <button data-view="objections" aria-label="Kifogások"><span class="ico">↯</span><span class="label">Kifogások</span></button>
 <button data-view="tools" aria-label="Segédletek"><span class="ico">◇</span><span class="label">Segédletek</span></button>
-<button data-view="progress" aria-label="Haladás"><span class="ico">↗</span><span class="label">Haladás</span></button>
+<button data-view="progress" aria-label="Áttekintés"><span class="ico">▦</span><span class="label">Áttekintés</span></button>
 </nav>
 </aside>
 <main class="main">
@@ -87,13 +87,11 @@ body{padding-bottom:calc(76px + env(safe-area-inset-bottom))}
 </section>
 
 <section class="view" id="leads">
-<div class="heroCard" style="margin-bottom:14px"><div class="kicker">Érdeklődők</div><h1>Ne fejben tartsd, hol tartasz.</h1><p>Egy pillantásból lásd, kit választottál ki, kit kerestél meg és kinél van következő lépés.</p></div>
-<div class="columns">
-<div class="col"><div class="colhead">ÚJ</div><div class="lead"><h3>Aranyolló Fodrászat</h3><p>Gyomaendrőd · 28 review</p></div><div class="lead"><h3>Parti Kávézó</h3><p>Szarvas</p></div></div>
-<div class="col"><div class="colhead">MEGKERESVE</div><div class="lead"><h3>Helyszíni példa</h3><p>Személyes beszélgetés megtörtént</p></div></div>
-<div class="col"><div class="colhead">VÁLASZRA VÁR</div><div class="lead"><h3>BBQ-Bódé</h3><p>Messenger · üzenet elküldve</p></div></div>
-<div class="col"><div class="colhead">DEMO / ÉRDEKLŐDIK</div><div class="lead"><h3>FreshCar</h3><p>Demo után árkérdés · follow-up</p></div></div>
-<div class="col"><div class="colhead">LEZÁRVA</div><div class="lead"><h3>Minta Szalon</h3><p>Nem releváns jelenleg.</p></div></div>
+<div class="heroCard" style="margin-bottom:14px"><div class="kicker">Vállalkozások</div><h1>Egy központi lista. Nulla dupla megkeresés.</h1><p>Rögzítsd a célpontot már a megkeresés előtt. A név + település kombináció alapján a rendszer kiszűri a duplikációkat.</p></div>
+<div class="card">
+<div class="sectionTitle"><h2>Vállalkozáslista</h2><button id="addLead" class="iconBtn">+ Új vállalkozás</button></div>
+<div class="toolbar"><input id="leadSearch" placeholder="Keresés név vagy település alapján…"><select id="leadCityFilter"><option value="">Minden település</option></select><select id="leadStatusFilter"><option value="">Minden státusz</option><option value="new">Új</option><option value="waiting">Válaszra vár</option><option value="later">Follow-up</option><option value="interested">Érdekli / demo</option><option value="no">Nem érdeklődik</option><option value="sold">Megrendelte</option></select></div>
+<div id="leadList" class="leadTable"></div>
 </div>
 </section>
 
@@ -122,18 +120,35 @@ body{padding-bottom:calc(76px + env(safe-area-inset-bottom))}
 </section>
 
 <section class="view" id="progress">
-<div class="heroCard" style="margin-bottom:14px"><div class="kicker">Haladás</div><h1>Ne csak az eredményt mérd. Mérd a végrehajtást is.</h1><p>A rendszer külön kezeli azt, amit kontrollálsz, és azt, amit nem.</p></div>
-<div class="progress"><div class="card"><div class="kicker">Folyamat</div><div class="bigProgress" id="progressOutreach">0</div><h3>végrehajtott megkeresés</h3><p>A sikeres nap: végrehajtottad a vállalt lépéseket és rögzítettél legalább egy tanulságot.</p></div><div class="card"><div class="kicker">Eredmény</div><div class="bigProgress" id="progressInterested">0</div><h3>komoly érdeklődő</h3><p>Ez üzleti eredmény, nem az önértékelésed mérőszáma.</p></div></div>
+<div class="heroCard" style="margin-bottom:14px"><div class="kicker">Területi áttekintés</div><h1>Lásd, melyik településen hol tartasz.</h1><p>A teljes outreach egy helyen: lefedettség, státuszok, válaszra várók, érdeklődők és következő follow-upok.</p></div>
+<div class="dashMetrics">
+<div class="dashMetric"><div class="n" id="dashTotal">0</div><div class="t">összes vállalkozás</div></div>
+<div class="dashMetric"><div class="n" id="dashContacted">0</div><div class="t">megkeresett</div></div>
+<div class="dashMetric"><div class="n" id="dashWaiting">0</div><div class="t">válaszra vár</div></div>
+<div class="dashMetric"><div class="n" id="dashInterested">0</div><div class="t">érdeklődik / demo</div></div>
+<div class="dashMetric"><div class="n" id="dashSold">0</div><div class="t">megrendelés</div></div>
+</div>
+<div class="card" style="margin-bottom:14px"><div class="sectionTitle"><h2>Települések</h2><span id="cityCount">0 település</span></div><div id="cityDashboard" class="cityGrid"></div></div>
+<div class="card followupBox"><div class="sectionTitle"><h2>Következő follow-upok</h2><span>ne vesszen el senki</span></div><div id="followupList" class="leadTable"></div></div>
 </section>
 </main>
 </div>
 <div class="modalBack" id="outreachModal"><div class="modal">
 <div class="kicker">Megkeresés rögzítése</div><h2>Mi történt?</h2>
-<label>Vállalkozás</label><input id="outBusiness" placeholder="pl. Minta Fodrászat">
+<label>Vállalkozás</label><input id="outBusiness" placeholder="pl. Minta Fodrászat"><label>Település</label><input id="outCity" placeholder="pl. Szarvas">
 <label>Megkeresés módja</label><select id="outChannel"><option value="personal">Személyesen</option><option value="email">E-mail</option><option value="messenger">Messenger</option><option value="phone">Telefon</option><option value="other">Egyéb</option></select><label>Státusz</label><select id="outResult"><option value="waiting">Válaszra vár</option><option value="no">Nem érdeklődik</option><option value="later">Később / follow-up</option><option value="interested">Érdekli / demo</option><option value="sold">Megrendelte</option></select><label>Follow-up dátum</label><input id="outFollowup" type="date">
 <label>Kifogás / reakció</label><input id="outObjection" placeholder="pl. Drágának tűnik">
 <label>Mit tanultál?</label><textarea id="outLesson" placeholder="Egy mondat is elég."></textarea>
 <div class="modalActions"><button class="btn modalClose" data-close="outreachModal">Mégse</button><button class="btn modalSave" id="saveOutreach">Mentés</button></div>
+</div></div>
+
+<div class="modalBack" id="leadModal"><div class="modal">
+<div class="kicker">Új vállalkozás</div><h2>Vedd fel a célpontlistára</h2>
+<label>Vállalkozás neve</label><input id="leadBusiness" placeholder="pl. Aranyolló Fodrászat">
+<label>Település</label><input id="leadCity" placeholder="pl. Gyomaendrőd">
+<label>Kapcsolati csatorna / elérhetőség</label><input id="leadContact" placeholder="pl. Messenger / hello@pelda.hu">
+<label>Megjegyzés</label><textarea id="leadNote" placeholder="Miért lehet jó célpont?"></textarea>
+<div class="modalActions"><button class="btn modalClose" data-close="leadModal">Mégse</button><button class="btn modalSave" id="saveLead">Mentés</button></div>
 </div></div>
 
 <div class="modalBack" id="dayModal"><div class="modal">
@@ -153,73 +168,92 @@ body{padding-bottom:calc(76px + env(safe-area-inset-bottom))}
 <script>
 (function(){
 const nav=[...document.querySelectorAll(".nav button")], views=[...document.querySelectorAll(".view")], toast=document.getElementById("toast");
-const state=JSON.parse(localStorage.getItem("ts_state")||'{"outreach":[],"days":[],"backlog":[]}');
+const state=JSON.parse(localStorage.getItem("ts_state")||'{"outreach":[],"days":[],"backlog":[],"leads":[]}');
+state.outreach=state.outreach||[]; state.days=state.days||[]; state.backlog=state.backlog||[]; state.leads=state.leads||[];
+function norm(s){return (s||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g," ").trim()}
+function id(){return Date.now().toString(36)+Math.random().toString(36).slice(2,7)}
+function esc(s){return String(s||"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+function statusText(s){return ({new:"Új",waiting:"Válaszra vár",later:"Follow-up",interested:"Érdekli / demo",no:"Nem érdeklődik",sold:"Megrendelte"})[s]||"Új"}
+function channelText(s){return ({personal:"Személyes",email:"E-mail",messenger:"Messenger",phone:"Telefon",other:"Egyéb"})[s]||""}
 function save(){localStorage.setItem("ts_state",JSON.stringify(state));render()}
-function ping(msg){toast.textContent=msg||"Mentve ✓";toast.classList.add("show");clearTimeout(window.__t);window.__t=setTimeout(()=>toast.classList.remove("show"),1300)}
-function openView(id){nav.forEach(b=>b.classList.toggle("active",b.dataset.view===id));views.forEach(v=>v.classList.toggle("active",v.id===id));localStorage.setItem("ts_view",id);window.scrollTo(0,0)}
+function ping(msg){toast.textContent=msg||"Mentve ✓";toast.classList.add("show");clearTimeout(window.__t);window.__t=setTimeout(()=>toast.classList.remove("show"),1700)}
+function openView(v){nav.forEach(b=>b.classList.toggle("active",b.dataset.view===v));views.forEach(x=>x.classList.toggle("active",x.id===v));localStorage.setItem("ts_view",v);window.scrollTo(0,0)}
 nav.forEach(b=>b.addEventListener("click",()=>openView(b.dataset.view)));
 document.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>openView(b.dataset.go)));
-const last=localStorage.getItem("ts_view"); if(last && document.getElementById(last)) openView(last);
-
-function render(){
- const n=state.outreach.length, interested=state.outreach.filter(x=>x.result==="interested"||x.result==="sold").length, waiting=state.outreach.filter(x=>x.result==="waiting").length;
- document.getElementById("outreachCount").textContent=Math.min(n,3);
- document.getElementById("missionFill").style.width=Math.min(100,n/3*100)+"%";
- document.getElementById("metricOutreach").textContent=n; document.getElementById("metricWaiting").textContent=waiting;
- document.getElementById("progressOutreach").textContent=n;
- document.getElementById("progressInterested").textContent=interested;
- document.getElementById("metricLessons").textContent=state.outreach.filter(x=>x.lesson&&x.lesson.trim()).length;
- document.getElementById("metricLeads").textContent=12+state.outreach.filter(x=>x.business&&x.business.trim()).length;
- const checks=[...document.querySelectorAll(".check")], done=checks.filter(b=>b.classList.contains("done")).length;
- document.getElementById("taskCounter").textContent=done+"/"+checks.length+" kész";
- renderBacklog();
-}
-document.querySelectorAll(".check").forEach((b,i)=>{const k="ts_task_"+i;if(localStorage.getItem(k)==="1"){b.classList.add("done");b.closest(".task").classList.add("done")}b.addEventListener("click",()=>{const d=b.classList.toggle("done");b.closest(".task").classList.toggle("done",d);localStorage.setItem(k,d?"1":"0");render();ping(d?"Feladat kész ✓":"Visszaállítva")})});
-
-function openModal(id){document.getElementById(id).classList.add("open")}
-function closeModal(id){document.getElementById(id).classList.remove("open")}
+function openModal(x){document.getElementById(x).classList.add("open")}
+function closeModal(x){document.getElementById(x).classList.remove("open")}
 document.querySelectorAll("[data-close]").forEach(b=>b.addEventListener("click",()=>closeModal(b.dataset.close)));
 document.querySelectorAll(".modalBack").forEach(m=>m.addEventListener("click",e=>{if(e.target===m)m.classList.remove("open")}));
 
-document.getElementById("logOutreach").addEventListener("click",()=>openModal("outreachModal"));
-document.getElementById("outChannel").addEventListener("change",e=>{
-  if(e.target.value==="email"||e.target.value==="messenger") document.getElementById("outResult").value="waiting";
-});
-document.getElementById("saveOutreach").addEventListener("click",()=>{
- const item={business:document.getElementById("outBusiness").value.trim(),channel:document.getElementById("outChannel").value,result:document.getElementById("outResult").value,followup:document.getElementById("outFollowup").value,objection:document.getElementById("outObjection").value.trim(),lesson:document.getElementById("outLesson").value.trim(),at:new Date().toISOString()};
- state.outreach.push(item); save(); ["outBusiness","outObjection","outLesson","outFollowup"].forEach(id=>document.getElementById(id).value=""); closeModal("outreachModal"); ping("Megkeresés rögzítve ✓");
-});
-document.getElementById("closeDay").addEventListener("click",()=>{
- const last=state.days[state.days.length-1]||{}; document.getElementById("dayGood").value=last.good||"";document.getElementById("dayHard").value=last.hard||"";document.getElementById("dayNext").value="";openModal("dayModal")
-});
-document.getElementById("saveDay").addEventListener("click",()=>{
- state.days.push({good:document.getElementById("dayGood").value.trim(),hard:document.getElementById("dayHard").value.trim(),next:document.getElementById("dayNext").value.trim(),at:new Date().toISOString()});save();closeModal("dayModal");ping("Nap lezárva. Holnap innen folytatjuk.");
-});
-
-const guides={
-"Első megkeresés — 30 mp":'<p><b>Nyitás:</b> „Üdv! Zoltai Sándor vagyok. Helyi vállalkozásoknak készítek egyszerű Google értékelő kártyát. Érdekes lehet ez Önnek?”</p><p class="miniNote">Ne töltsd ki a csendet. Hagyd válaszolni.</p>',
-"Google profil gyorscheck":'<p>☐ cégnév és cím rendben<br>☐ nyitvatartás naprakész<br>☐ van friss fotó<br>☐ működik a review link<br>☐ vannak megválaszolatlan vélemények</p><p class="miniNote">Ez nem SEO audit. Csak kontextus a beszélgetéshez.</p>',
-"Kifogáskezelő":'<p><b>Mechanika:</b> hallgasd meg → ismerd el → kérdezz vissza → válaszolj röviden → tudd, mikor zárd le.</p>',
-"Demo forgatókönyv":'<p>1. Tedd le a kártyát.<br>2. „Csak érintse ide a telefonját.”<br>3. Várd meg, míg megnyílik a review oldal.<br>4. Mondd: „Ennyi. Innen már a vendég dönt.”</p>',
-"Gyártási workflow":'<p>Dahle 502 → pontos méretre vágás → 3 mm sarokkerekítés → pozicionáló sablon → hinge method → simítás → NFC és QR teszt.</p>',
-"Napi lezárás":'<p>1. Mi ment jól?<br>2. Mi volt nehéz?<br>3. Mi a holnapi első lépés?</p><p class="miniNote">Nem kell hosszú naplót írni.</p>'
-};
-document.querySelectorAll(".tool").forEach(t=>t.addEventListener("click",()=>{
- const title=t.querySelector("h3").textContent; document.getElementById("simpleTitle").textContent=title;document.getElementById("simpleBody").innerHTML=guides[title]||"<p>Segédlet készül.</p>";openModal("simpleModal")
-}));
-
-document.getElementById("addBacklog").addEventListener("click",()=>{
- document.getElementById("simpleTitle").textContent="Új backlog feladat";document.getElementById("simpleBody").innerHTML='<label>Feladat</label><input id="newBacklogTitle" placeholder="Mit ne felejts el?"><label>Megjegyzés</label><input id="newBacklogNote" placeholder="Opcionális"><div class="modalActions"><button class="btn modalSave" id="saveBacklog">Hozzáadás</button></div>';openModal("simpleModal");
- setTimeout(()=>document.getElementById("saveBacklog").addEventListener("click",()=>{const title=document.getElementById("newBacklogTitle").value.trim();if(!title)return;state.backlog.push({title,note:document.getElementById("newBacklogNote").value.trim()});save();closeModal("simpleModal");ping("Backloghoz adva ✓")}),0)
-});
-function renderBacklog(){
- const list=document.getElementById("backlogList"); list.querySelectorAll(".customBacklog").forEach(x=>x.remove());
- state.backlog.forEach((x,i)=>{const el=document.createElement("div");el.className="item customBacklog";el.innerHTML='<div class="row"><div><h3>'+esc(x.title)+'</h3><p>'+esc(x.note||"Saját feladat")+'</p><div class="inlineActions"><button class="iconBtn doneBacklog" data-i="'+i+'">Kész ✓</button></div></div><span class="status">Saját</span></div>';list.appendChild(el)});
- document.querySelectorAll(".doneBacklog").forEach(b=>b.addEventListener("click",()=>{state.backlog.splice(Number(b.dataset.i),1);save();ping("Feladat lezárva ✓")}))
+// Migrate earlier outreach into master lead registry once.
+if(state.leads.length===0 && state.outreach.length){
+ state.outreach.forEach(o=>state.leads.push({id:id(),business:o.business||"Korábbi megkeresés",city:o.city||"Nincs megadva",contact:"",note:"Migrált korábbi megkeresés",status:o.result||"waiting",channel:o.channel||"",followup:o.followup||"",lastContact:o.at||"",history:[o]}));
+ localStorage.setItem("ts_state",JSON.stringify(state));
 }
-function esc(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+function findLead(business,city){const bn=norm(business),cn=norm(city);return state.leads.find(l=>norm(l.business)===bn&&norm(l.city)===cn)}
+function addOrUpdateFromOutreach(item){
+ let lead=findLead(item.business,item.city);
+ if(!lead){lead={id:id(),business:item.business,city:item.city,contact:"",note:"",status:item.result,channel:item.channel,followup:item.followup,lastContact:item.at,history:[]};state.leads.push(lead)}
+ lead.status=item.result;lead.channel=item.channel;lead.followup=item.followup;lead.lastContact=item.at;lead.history=lead.history||[];lead.history.push(item);return lead;
+}
+
+function render(){
+ const n=state.outreach.length, waiting=state.leads.filter(x=>x.status==="waiting").length, interested=state.leads.filter(x=>x.status==="interested"||x.status==="sold").length;
+ document.getElementById("outreachCount").textContent=Math.min(n,3);document.getElementById("missionFill").style.width=Math.min(100,n/3*100)+"%";
+ document.getElementById("metricOutreach").textContent=n;document.getElementById("metricWaiting").textContent=waiting;document.getElementById("metricLessons").textContent=state.outreach.filter(x=>x.lesson&&x.lesson.trim()).length;document.getElementById("metricLeads").textContent=state.leads.length;
+ const checks=[...document.querySelectorAll(".check")],done=checks.filter(b=>b.classList.contains("done")).length;document.getElementById("taskCounter").textContent=done+"/"+checks.length+" kész";
+ renderBacklog();renderLeads();renderDashboard();
+}
+document.querySelectorAll(".check").forEach((b,i)=>{const k="ts_task_"+i;if(localStorage.getItem(k)==="1"){b.classList.add("done");b.closest(".task").classList.add("done")}b.addEventListener("click",()=>{const d=b.classList.toggle("done");b.closest(".task").classList.toggle("done",d);localStorage.setItem(k,d?"1":"0");render();ping(d?"Feladat kész ✓":"Visszaállítva")})});
+
+document.getElementById("logOutreach").addEventListener("click",()=>openModal("outreachModal"));
+document.getElementById("outChannel").addEventListener("change",e=>{if(e.target.value==="email"||e.target.value==="messenger")document.getElementById("outResult").value="waiting"});
+document.getElementById("saveOutreach").addEventListener("click",()=>{
+ const business=document.getElementById("outBusiness").value.trim(),city=document.getElementById("outCity").value.trim();
+ if(!business||!city){ping("A vállalkozás és a település kötelező.");return}
+ const item={business,city,channel:document.getElementById("outChannel").value,result:document.getElementById("outResult").value,followup:document.getElementById("outFollowup").value,objection:document.getElementById("outObjection").value.trim(),lesson:document.getElementById("outLesson").value.trim(),at:new Date().toISOString()};
+ state.outreach.push(item);addOrUpdateFromOutreach(item);save();["outBusiness","outCity","outObjection","outLesson","outFollowup"].forEach(x=>document.getElementById(x).value="");closeModal("outreachModal");ping("Megkeresés rögzítve ✓");
+});
+
+document.getElementById("addLead").addEventListener("click",()=>openModal("leadModal"));
+document.getElementById("saveLead").addEventListener("click",()=>{
+ const business=document.getElementById("leadBusiness").value.trim(),city=document.getElementById("leadCity").value.trim();
+ if(!business||!city){ping("A név és a település kötelező.");return}
+ const dupe=findLead(business,city);if(dupe){ping("Már szerepel: "+dupe.business+" · "+dupe.city);return}
+ state.leads.push({id:id(),business,city,contact:document.getElementById("leadContact").value.trim(),note:document.getElementById("leadNote").value.trim(),status:"new",channel:"",followup:"",lastContact:"",history:[]});
+ ["leadBusiness","leadCity","leadContact","leadNote"].forEach(x=>document.getElementById(x).value="");save();closeModal("leadModal");ping("Vállalkozás felvéve ✓");
+});
+
+function renderLeads(){
+ const list=document.getElementById("leadList"),q=norm(document.getElementById("leadSearch").value),city=document.getElementById("leadCityFilter").value,status=document.getElementById("leadStatusFilter").value;
+ const cities=[...new Set(state.leads.map(x=>x.city).filter(Boolean))].sort((a,b)=>a.localeCompare(b,"hu"));
+ const sel=document.getElementById("leadCityFilter"),cur=sel.value;sel.innerHTML='<option value="">Minden település</option>'+cities.map(x=>'<option>'+esc(x)+'</option>').join("");sel.value=cur;
+ const rows=state.leads.filter(l=>(!q||norm(l.business+" "+l.city).includes(q))&&(!city||l.city===city)&&(!status||l.status===status)).sort((a,b)=>(a.city+a.business).localeCompare(b.city+b.business,"hu"));
+ list.innerHTML=rows.length?rows.map(l=>'<div class="leadRow"><div><strong>'+esc(l.business)+'</strong><div class="sub">'+esc(l.contact||"Nincs elérhetőség rögzítve")+'</div></div><div>'+esc(l.city)+'</div><div><span class="pill '+esc(l.status)+'">'+statusText(l.status)+'</span></div><div>'+esc(channelText(l.channel)||"—")+'</div><div class="leadActions"><button class="iconBtn contactLead" data-id="'+l.id+'">Megkeresés</button></div></div>').join(""):'<div class="empty">Nincs találat.</div>';
+ document.querySelectorAll(".contactLead").forEach(b=>b.addEventListener("click",()=>{const l=state.leads.find(x=>x.id===b.dataset.id);document.getElementById("outBusiness").value=l.business;document.getElementById("outCity").value=l.city;openModal("outreachModal")}));
+}
+["leadSearch","leadCityFilter","leadStatusFilter"].forEach(id=>document.getElementById(id).addEventListener("input",renderLeads));
+
+function renderDashboard(){
+ const leads=state.leads,contacted=leads.filter(x=>x.status!=="new").length,waiting=leads.filter(x=>x.status==="waiting").length,interested=leads.filter(x=>x.status==="interested").length,sold=leads.filter(x=>x.status==="sold").length;
+ document.getElementById("dashTotal").textContent=leads.length;document.getElementById("dashContacted").textContent=contacted;document.getElementById("dashWaiting").textContent=waiting;document.getElementById("dashInterested").textContent=interested;document.getElementById("dashSold").textContent=sold;
+ const cities=[...new Set(leads.map(x=>x.city).filter(Boolean))].sort((a,b)=>a.localeCompare(b,"hu"));document.getElementById("cityCount").textContent=cities.length+" település";
+ const wrap=document.getElementById("cityDashboard");
+ wrap.innerHTML=cities.length?cities.map(city=>{const a=leads.filter(x=>x.city===city);const c=a.filter(x=>x.status!=="new").length,w=a.filter(x=>x.status==="waiting").length,i=a.filter(x=>x.status==="interested"||x.status==="sold").length;return '<div class="cityCard"><div class="cityHead"><h3>'+esc(city)+'</h3><span>'+a.length+' vállalkozás</span></div><div class="cityStats"><div class="cityStat"><b>'+a.length+'</b><span>összes</span></div><div class="cityStat"><b>'+c+'</b><span>megkeresve</span></div><div class="cityStat"><b>'+w+'</b><span>vár</span></div><div class="cityStat"><b>'+i+'</b><span>érdeklődik</span></div></div></div>'}).join(""):'<div class="empty">Még nincs település rögzítve.</div>';
+ const today=new Date().toISOString().slice(0,10);const fu=leads.filter(x=>x.followup&&x.status!=="sold"&&x.status!=="no").sort((a,b)=>a.followup.localeCompare(b.followup)).slice(0,8);
+ document.getElementById("followupList").innerHTML=fu.length?fu.map(l=>'<div class="leadRow"><div><strong>'+esc(l.business)+'</strong><div class="sub">'+esc(l.city)+'</div></div><div>'+esc(l.followup)+'</div><div><span class="pill '+(l.followup<=today?"no":"waiting")+'">'+(l.followup<=today?"Esedékes":"Tervezett")+'</span></div><div>'+esc(channelText(l.channel)||"—")+'</div><div class="leadActions"><button class="iconBtn contactLeadDash" data-id="'+l.id+'">Megnyitás</button></div></div>').join(""):'<div class="empty">Nincs ütemezett follow-up.</div>';
+ document.querySelectorAll(".contactLeadDash").forEach(b=>b.addEventListener("click",()=>{const l=state.leads.find(x=>x.id===b.dataset.id);document.getElementById("outBusiness").value=l.business;document.getElementById("outCity").value=l.city;openModal("outreachModal")}));
+}
+
+document.getElementById("closeDay").addEventListener("click",()=>{const last=state.days[state.days.length-1]||{};document.getElementById("dayGood").value=last.good||"";document.getElementById("dayHard").value=last.hard||"";document.getElementById("dayNext").value="";openModal("dayModal")});
+document.getElementById("saveDay").addEventListener("click",()=>{state.days.push({good:document.getElementById("dayGood").value.trim(),hard:document.getElementById("dayHard").value.trim(),next:document.getElementById("dayNext").value.trim(),at:new Date().toISOString()});save();closeModal("dayModal");ping("Nap lezárva. Holnap innen folytatjuk.")});
+
+const guides={"Első megkeresés — 30 mp":'<p><b>Nyitás:</b> „Üdv! Zoltai Sándor vagyok. Helyi vállalkozásoknak készítek egyszerű Google értékelő kártyát. Érdekes lehet ez Önnek?”</p><p class="miniNote">Ne töltsd ki a csendet. Hagyd válaszolni.</p>',"Google profil gyorscheck":'<p>☐ cégnév és cím rendben<br>☐ nyitvatartás naprakész<br>☐ van friss fotó<br>☐ működik a review link<br>☐ vannak megválaszolatlan vélemények</p><p class="miniNote">Ez nem SEO audit. Csak kontextus a beszélgetéshez.</p>',"Kifogáskezelő":'<p><b>Mechanika:</b> hallgasd meg → ismerd el → kérdezz vissza → válaszolj röviden → tudd, mikor zárd le.</p>',"Demo forgatókönyv":'<p>1. Tedd le a kártyát.<br>2. „Csak érintse ide a telefonját.”<br>3. Várd meg, míg megnyílik a review oldal.<br>4. Mondd: „Ennyi. Innen már a vendég dönt.”</p>',"Gyártási workflow":'<p>Dahle 502 → pontos méretre vágás → 3 mm sarokkerekítés → pozicionáló sablon → hinge method → simítás → NFC és QR teszt.</p>',"Napi lezárás":'<p>1. Mi ment jól?<br>2. Mi volt nehéz?<br>3. Mi a holnapi első lépés?</p><p class="miniNote">Nem kell hosszú naplót írni.</p>'};
+document.querySelectorAll(".tool").forEach(t=>t.addEventListener("click",()=>{const title=t.querySelector("h3").textContent;document.getElementById("simpleTitle").textContent=title;document.getElementById("simpleBody").innerHTML=guides[title]||"<p>Segédlet készül.</p>";openModal("simpleModal")}));
+document.getElementById("addBacklog").addEventListener("click",()=>{document.getElementById("simpleTitle").textContent="Új backlog feladat";document.getElementById("simpleBody").innerHTML='<label>Feladat</label><input id="newBacklogTitle" placeholder="Mit ne felejts el?"><label>Megjegyzés</label><input id="newBacklogNote" placeholder="Opcionális"><div class="modalActions"><button class="btn modalSave" id="saveBacklog">Hozzáadás</button></div>';openModal("simpleModal");setTimeout(()=>document.getElementById("saveBacklog").addEventListener("click",()=>{const title=document.getElementById("newBacklogTitle").value.trim();if(!title)return;state.backlog.push({title,note:document.getElementById("newBacklogNote").value.trim()});save();closeModal("simpleModal");ping("Backloghoz adva ✓")}),0)});
+function renderBacklog(){const list=document.getElementById("backlogList");list.querySelectorAll(".customBacklog").forEach(x=>x.remove());state.backlog.forEach((x,i)=>{const el=document.createElement("div");el.className="item customBacklog";el.innerHTML='<div class="row"><div><h3>'+esc(x.title)+'</h3><p>'+esc(x.note||"Saját feladat")+'</p><div class="inlineActions"><button class="iconBtn doneBacklog" data-i="'+i+'">Kész ✓</button></div></div><span class="status">Saját</span></div>';list.appendChild(el)});document.querySelectorAll(".doneBacklog").forEach(b=>b.addEventListener("click",()=>{state.backlog.splice(Number(b.dataset.i),1);save();ping("Feladat lezárva ✓")}))}
 document.querySelectorAll(".toToday").forEach(b=>b.addEventListener("click",()=>{ping("Kijelölve mára ✓");openView("today")}));
-render();
+const last=localStorage.getItem("ts_view");if(last&&document.getElementById(last))openView(last);render();
 })();
 </script>
 </body>
