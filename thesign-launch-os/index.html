@@ -151,6 +151,17 @@ body{padding-bottom:calc(76px + env(safe-area-inset-bottom))}
 <div class="modalActions"><button class="btn modalClose" data-close="leadModal">Mégse</button><button class="btn modalSave" id="saveLead">Mentés</button></div>
 </div></div>
 
+<div class="modalBack" id="editLeadModal"><div class="modal">
+<div class="kicker">Vállalkozás szerkesztése</div><h2>Adatok frissítése</h2>
+<input id="editLeadId" type="hidden">
+<label>Vállalkozás neve</label><input id="editLeadBusiness">
+<label>Település</label><input id="editLeadCity" list="cityOptions" autocomplete="off">
+<label>Kapcsolati csatorna / elérhetőség</label><input id="editLeadContact">
+<label>Státusz</label><select id="editLeadStatus"><option value="new">Új</option><option value="waiting">Válaszra vár</option><option value="later">Follow-up</option><option value="interested">Érdekli / demo</option><option value="no">Nem érdeklődik</option><option value="sold">Megrendelte</option></select>
+<label>Megjegyzés</label><textarea id="editLeadNote"></textarea>
+<div class="modalActions"><button class="btn modalClose" data-close="editLeadModal">Mégse</button><button class="btn modalSave" id="saveLeadEdit">Mentés</button></div>
+</div></div>
+
 <div class="modalBack" id="dayModal"><div class="modal">
 <div class="kicker">Napi lezárás</div><h2>3 perc. Ennyi elég.</h2>
 <label>Mi ment ma jól?</label><textarea id="dayGood"></textarea>
@@ -219,7 +230,7 @@ document.querySelectorAll(".check").forEach((b,i)=>{const k="ts_task_"+i;if(loca
 
 document.getElementById("logOutreach").addEventListener("click",()=>openModal("outreachModal"));
 document.getElementById("outChannel").addEventListener("change",e=>{if(e.target.value==="email"||e.target.value==="messenger")document.getElementById("outResult").value="waiting"});
-["outCity","leadCity"].forEach(id=>{
+["outCity","leadCity","editLeadCity"].forEach(id=>{
  const el=document.getElementById(id);
  el.addEventListener("focus",renderCityOptions);
  el.addEventListener("input",renderCityOptions);
@@ -246,8 +257,9 @@ function renderLeads(){
  const cities=[...new Set(state.leads.map(x=>x.city).filter(Boolean))].sort((a,b)=>a.localeCompare(b,"hu"));
  const sel=document.getElementById("leadCityFilter"),cur=sel.value;sel.innerHTML='<option value="">Minden település</option>'+cities.map(x=>'<option>'+esc(x)+'</option>').join("");sel.value=cur;
  const rows=state.leads.filter(l=>(!q||norm(l.business+" "+l.city).includes(q))&&(!city||l.city===city)&&(!status||l.status===status)).sort((a,b)=>(a.city+a.business).localeCompare(b.city+b.business,"hu"));
- list.innerHTML=rows.length?rows.map(l=>'<div class="leadRow"><div><strong>'+esc(l.business)+'</strong><div class="sub">'+esc(l.contact||"Nincs elérhetőség rögzítve")+'</div></div><div>'+esc(l.city)+'</div><div><span class="pill '+esc(l.status)+'">'+statusText(l.status)+'</span></div><div>'+esc(channelText(l.channel)||"—")+'</div><div class="leadActions"><button class="iconBtn contactLead" data-id="'+l.id+'">Megkeresés</button></div></div>').join(""):'<div class="empty">Nincs találat.</div>';
+ list.innerHTML=rows.length?rows.map(l=>'<div class="leadRow"><div><strong>'+esc(l.business)+'</strong><div class="sub">'+esc(l.contact||"Nincs elérhetőség rögzítve")+'</div></div><div>'+esc(l.city)+'</div><div><span class="pill '+esc(l.status)+'">'+statusText(l.status)+'</span></div><div>'+esc(channelText(l.channel)||"—")+'</div><div class="leadActions"><button class="iconBtn editLead" data-id="'+l.id+'">Szerkesztés</button> <button class="iconBtn contactLead" data-id="'+l.id+'">Megkeresés</button></div></div>').join(""):'<div class="empty">Nincs találat.</div>';
  document.querySelectorAll(".contactLead").forEach(b=>b.addEventListener("click",()=>{const l=state.leads.find(x=>x.id===b.dataset.id);document.getElementById("outBusiness").value=l.business;document.getElementById("outCity").value=l.city;openModal("outreachModal")}));
+ document.querySelectorAll(".editLead").forEach(b=>b.addEventListener("click",()=>{const l=state.leads.find(x=>x.id===b.dataset.id);if(!l)return;document.getElementById("editLeadId").value=l.id;document.getElementById("editLeadBusiness").value=l.business||"";document.getElementById("editLeadCity").value=l.city||"";document.getElementById("editLeadContact").value=l.contact||"";document.getElementById("editLeadStatus").value=l.status||"new";document.getElementById("editLeadNote").value=l.note||"";openModal("editLeadModal")}));
 }
 ["leadSearch","leadCityFilter","leadStatusFilter"].forEach(id=>document.getElementById(id).addEventListener("input",renderLeads));
 
@@ -261,6 +273,19 @@ function renderDashboard(){
  document.getElementById("followupList").innerHTML=fu.length?fu.map(l=>'<div class="leadRow"><div><strong>'+esc(l.business)+'</strong><div class="sub">'+esc(l.city)+'</div></div><div>'+esc(l.followup)+'</div><div><span class="pill '+(l.followup<=today?"no":"waiting")+'">'+(l.followup<=today?"Esedékes":"Tervezett")+'</span></div><div>'+esc(channelText(l.channel)||"—")+'</div><div class="leadActions"><button class="iconBtn contactLeadDash" data-id="'+l.id+'">Megnyitás</button></div></div>').join(""):'<div class="empty">Nincs ütemezett follow-up.</div>';
  document.querySelectorAll(".contactLeadDash").forEach(b=>b.addEventListener("click",()=>{const l=state.leads.find(x=>x.id===b.dataset.id);document.getElementById("outBusiness").value=l.business;document.getElementById("outCity").value=l.city;openModal("outreachModal")}));
 }
+
+document.getElementById("saveLeadEdit").addEventListener("click",()=>{
+ const lead=state.leads.find(x=>x.id===document.getElementById("editLeadId").value); if(!lead)return;
+ const oldBusiness=lead.business, oldCity=lead.city;
+ const business=document.getElementById("editLeadBusiness").value.trim(), city=canonicalCity(document.getElementById("editLeadCity").value);
+ if(!business||!city){ping("A név és a település kötelező.");return}
+ const dupe=state.leads.find(x=>x.id!==lead.id&&norm(x.business)===norm(business)&&norm(x.city)===norm(city));
+ if(dupe){ping("Már szerepel: "+dupe.business+" · "+dupe.city);return}
+ lead.business=business; lead.city=city; lead.contact=document.getElementById("editLeadContact").value.trim(); lead.status=document.getElementById("editLeadStatus").value; lead.note=document.getElementById("editLeadNote").value.trim();
+ // Keep outreach history aligned so dashboard and history stay consistent.
+ state.outreach.forEach(o=>{if(norm(o.business)===norm(oldBusiness)&&norm(o.city)===norm(oldCity)){o.business=business;o.city=city}});
+ save(); closeModal("editLeadModal"); ping("Vállalkozás frissítve ✓");
+});
 
 document.getElementById("closeDay").addEventListener("click",()=>{const last=state.days[state.days.length-1]||{};document.getElementById("dayGood").value=last.good||"";document.getElementById("dayHard").value=last.hard||"";document.getElementById("dayNext").value="";openModal("dayModal")});
 document.getElementById("saveDay").addEventListener("click",()=>{state.days.push({good:document.getElementById("dayGood").value.trim(),hard:document.getElementById("dayHard").value.trim(),next:document.getElementById("dayNext").value.trim(),at:new Date().toISOString()});save();closeModal("dayModal");ping("Nap lezárva. Holnap innen folytatjuk.")});
