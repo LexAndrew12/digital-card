@@ -1,14 +1,13 @@
 // TheSign Launch OS — Firebase configuration
-// This file is safe to keep in a public web repository.
-// Security MUST be enforced by Firebase Authentication + Firestore Security Rules.
+// Firebase Web config values are public identifiers; security is enforced by Authentication + Firestore Rules.
 window.THESIGN_FIREBASE = {
-  enabled: false,
+  enabled: true,
   config: {
-    apiKey: "PASTE_FIREBASE_API_KEY",
-    authDomain: "PASTE_PROJECT_ID.firebaseapp.com",
-    projectId: "PASTE_PROJECT_ID",
-    storageBucket: "PASTE_PROJECT_ID.firebasestorage.app",
-    messagingSenderId: "PASTE_MESSAGING_SENDER_ID",
-    appId: "PASTE_APP_ID"
+    apiKey: "AIzaSyC_C8lsdzq1QJGBCWYa-ezI0wUTflJ5dnY",
+    authDomain: "thesign-launch-os.firebaseapp.com",
+    projectId: "thesign-launch-os",
+    storageBucket: "thesign-launch-os.firebasestorage.app",
+    messagingSenderId: "1000470967663",
+    appId: "1:1000470967663:web:cae8d28d5eb3fcedfc249a"
   }
 };
