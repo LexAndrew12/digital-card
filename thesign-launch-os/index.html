@@ -110,7 +110,7 @@ body{padding-bottom:calc(76px + env(safe-area-inset-bottom))}
 <div class="card"><div class="sectionTitle"><h2>Nyitott feladatok</h2><button id="addBacklog" class="iconBtn">+ Új feladat</button></div><div class="list" id="backlogList">
 <div class="item"><div class="row"><div><h3>Standard kártya végleges fotózása</h3><p>3 használható termékfotó természetes fényben.</p><div class="inlineActions"><button class="iconBtn toToday">→ Ma</button></div></div><span class="status hot">Következő</span></div></div>
 <div class="item"><div class="row"><div><h3>3 mm-es sarokkerekítő beszerzése</h3><p>Gyártási minőség javítása; jelenleg nem blokkol.</p></div><span class="status">Később</span></div></div>
-<div class="item"><div class="row"><div><h3>Egylapos árlista elkészítése</h3><p>Standard 4 990 Ft / Egyedi 6 990 Ft.</p><div class="inlineActions"><button class="iconBtn toToday">→ Ma</button></div></div><span class="status hot">Fontos</span></div></div>
+<div class="item"><div class="row"><div><h3>Egylapos árlista elkészítése</h3><p>Standard 4 990 Ft / Egyedi 7 990 Ft.</p><div class="inlineActions"><button class="iconBtn toToday">→ Ma</button></div></div><span class="status hot">Fontos</span></div></div>
 <div class="item"><div class="row"><div><h3>Kifogásokból válasz-sablon</h3><p>Drága, megcsinálom magam, nem érdekel.</p></div><span class="status">Később</span></div></div>
 </div></div>
 </section>
@@ -308,6 +308,7 @@ async function initFirebaseBridge(){
       localStorage.setItem("ts_state_saved_at",new Date().toISOString());
       render();renderCityOptions();
     }
+    await syncRemoteLeads(true);
     setAuthMessage("Szinkron kész.","ok");
     gate.style.display="none";
    }catch(err){
@@ -324,7 +325,7 @@ async function initFirebaseBridge(){
 }
 
 const PLAN=[
-{p:"Alapok",t:"Ajánlat véglegesítése",g:"A termék, ár és ígéret legyen egyértelmű.",c:["Standard kártya: 4 990 Ft","Egyedi kártya: 6 990 Ft","Írd le egy mondatban, mit kap az ügyfél"]},
+{p:"Alapok",t:"Ajánlat véglegesítése",g:"A termék, ár és ígéret legyen egyértelmű.",c:["Standard kártya: 4 990 Ft","Egyedi kártya: 7 990 Ft","Írd le egy mondatban, mit kap az ügyfél"]},
 {p:"Piac",t:"Első céltelepülés és 10 vállalkozás",g:"Kezdj fókuszált listával, ne végtelen kutatással.",c:["Válaszd ki az első települést","Rögzíts 10 vállalkozást az appban","Ellenőrizd, nincs duplikáció"]},
 {p:"Piac",t:"3 személyre szabott megközelítés",g:"Készülj három valós megkeresésre.",c:["Válassz 3 céget","Nézd meg röviden a Google profiljukat","Írj 1-1 személyes nyitómondatot"]},
 {p:"Értékesítés",t:"Első 3 megkeresés",g:"A cél reakciót szerezni, nem bizonyítani.",c:["3 megkeresés","Csatorna rögzítése","Minden reakció státuszolása"]},
@@ -352,7 +353,7 @@ const PLAN=[
 {p:"Optimalizálás",t:"Legjobb csatorna duplázása",g:"Használd többet azt, ami eddig működött.",c:["Csatorna kiválasztása","5 outreach","Eredmény összevetése"]},
 {p:"Rendszer",t:"Gyártási folyamat standardizálása",g:"Az eladás után ne káosz legyen.",c:["Vágás","3 mm sarok","Pozicionálás","Teszt","Átadás"]},
 {p:"Rendszer",t:"CRM takarítás",g:"Minden leadnek legyen értelmes státusza.",c:["Újak átnézése","Várakozók átnézése","Lezártak rendbetétele"]},
-{p:"Pénz",t:"Árazás és margin review",g:"Nézd meg, hogy az ár valóban fenntartható-e.",c:["Anyagköltség","Időráfordítás","4 990 / 6 990 Ft értékelése","Ne változtass kevés adatból"]},
+{p:"Pénz",t:"Árazás és margin review",g:"Nézd meg, hogy az ár valóban fenntartható-e.",c:["Anyagköltség","Időráfordítás","4 990 / 7 990 Ft értékelése","Ne változtass kevés adatból"]},
 {p:"Döntés",t:"30 napos összegzés és következő ciklus",g:"Döntsd el, mit ismételsz a következő 30 napban.",c:["Összes megkeresés","Érdeklődési ráta","Megrendelések","Legjobb település","Legjobb csatorna","Következő 30 nap fókusza"]}
 ];
 
@@ -508,8 +509,8 @@ document.getElementById("restoreFile").addEventListener("change",e=>{const file=
 document.getElementById("makeSnapshot").addEventListener("click",async()=>{await makeSnapshot("manual");ping("Snapshot elkészült ✓")});
 
 
-async function syncRemoteLeads(){
- if(firebaseEnabled())return;
+async function syncRemoteLeads(force=false){
+ if(firebaseEnabled()&&!force)return;
  try{
   const res=await fetch("data/leads.json?v="+Date.now(),{cache:"no-store"});
   if(!res.ok)throw new Error("HTTP "+res.status);
@@ -520,6 +521,13 @@ async function syncRemoteLeads(){
    if(!r||!r.business||!r.city)continue;
    const city=canonicalCity(r.city)||r.city;
    let lead=(r.remoteId&&state.leads.find(x=>x.remoteId===r.remoteId))||findLead(r.business,city);
+   if(r.deleted===true){
+    if(lead){
+     state.leads=state.leads.filter(x=>x.id!==lead.id);
+     changed=true;
+    }
+    continue;
+   }
    const existed=!!lead;
    if(!lead){
     lead={id:id(),business:r.business,city,contact:"",note:"",status:"new",channel:"",followup:"",lastContact:"",history:[]};
