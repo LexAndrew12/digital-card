@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#080b12">
+<meta name="theme-color" content="#06070b"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Sanyi OS</title>
 <style>
 :root{--bg:#080b12;--sidebar:#0b0f18e8;--panel:#101620d9;--panel2:#151c28;--panel3:#0d121b;--text:#f5f7fb;--muted:#8c96a8;--line:#ffffff12;--accent:#8a7cff;--accent2:#55d8cf;--green:#44d39d;--amber:#f2b95f;--red:#ff6b7e;--blue:#6bb8ff;--shadow:0 18px 50px #0000003d}
@@ -12,14 +12,245 @@ html[data-theme=light]{--bg:#f3f5f8;--sidebar:#f8fafce8;--panel:#fffffff2;--pane
 @media(max-width:1100px){.kpis{grid-template-columns:repeat(3,1fr)}.areas{grid-template-columns:repeat(2,1fr)}.s3{grid-column:span 6}}
 @media(max-width:820px){body{padding-bottom:calc(72px + env(safe-area-inset-bottom))}.shell{display:block}.sidebar{position:fixed;left:0;right:0;bottom:0;top:auto;height:auto;padding:6px 7px calc(6px + env(safe-area-inset-bottom));border:0;border-top:1px solid var(--line);z-index:40}.brand,.sync,.sidefoot{display:none}.nav{display:flex;overflow-x:auto;gap:3px}.nav button{flex:1 0 auto;min-width:68px;text-align:center;padding:9px 7px;font-size:9px}.main{padding:16px 12px 26px}.topbar{align-items:flex-start;margin-bottom:14px}.topbar h1{font-size:23px}.topactions .btn:not(.iconbtn){display:none}.mobiletop{display:block}.grid{display:block}.card,.s3,.s4,.s5,.s6,.s7,.s8,.s12{width:100%;margin-bottom:10px}.hero{padding:18px}.hero h2{font-size:21px}.kpis{grid-template-columns:repeat(2,1fr);gap:7px}.kpi{padding:11px}.kpi .v{font-size:20px}.areas,.pipeline{grid-template-columns:1fr 1fr}.focus{grid-template-columns:28px minmax(0,1fr);padding:12px}.focus .badge{grid-column:2}.sectionhead{margin-top:18px}.dbtoolbar{align-items:stretch}.dbtoolbar .input{min-width:100%;flex-basis:100%}.toast{left:12px;right:12px;bottom:82px;text-align:center}}
 @media(max-width:420px){.areas,.pipeline,.runwaygrid{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.kpi .sub{white-space:normal}.moneybig{font-size:27px}}
-.leadcard{border:1px solid var(--line);border-radius:14px;background:var(--panel3);padding:0 12px;margin-top:9px}.leadcard .row{border-bottom:0}.msggrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 0 12px 18px}.msgbox{border:1px solid var(--line);border-radius:12px;padding:11px;background:var(--panel2)}.msgbox .muted{margin:8px 0 10px;white-space:pre-wrap}.msgbox .copymsg{width:100%}.emailrow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:0 0 10px 18px}.emailrow b{font-size:11px}.emailrow .copymsg{width:auto}.msgactions{display:grid;grid-template-columns:1fr 1fr;gap:8px}.mailbtn{text-decoration:none;text-align:center;display:inline-flex;align-items:center;justify-content:center}@media(max-width:620px){.msgactions{grid-template-columns:1fr}.emailrow{padding-left:0}}@media(max-width:720px){.msggrid{grid-template-columns:1fr;padding-left:0}}.leadmsg{padding:0 0 12px 18px;display:flex;gap:10px;align-items:flex-start}.leadmsg .muted{flex:1;white-space:pre-wrap}.copymsg{flex:0 0 auto;min-height:34px;padding:7px 10px}@media(max-width:620px){.leadmsg{padding-left:0;display:block}.copymsg{width:100%;margin-top:9px}}.editbtn{border:1px solid var(--line);background:var(--panel2);color:var(--muted);width:30px;height:30px;border-radius:9px;display:inline-grid;place-items:center;font-size:13px;flex:0 0 auto}.editbtn:hover{color:var(--text);border-color:#8a7cff66}.modal{position:fixed;inset:0;background:#05070bbd;backdrop-filter:blur(10px);z-index:110;display:none;align-items:flex-end;justify-content:center;padding:18px}.modal.on{display:flex}.editor{width:min(720px,100%);max-height:min(88vh,900px);overflow:auto;background:var(--panel2);border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:0 30px 90px #0009}.editorhead{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;position:sticky;top:-20px;background:var(--panel2);z-index:3;padding:20px 0 12px;margin-top:-20px}.editorgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.editorgrid .wide{grid-column:1/-1}.editoractions{position:sticky;bottom:-20px;background:var(--panel2);padding:12px 0 20px;margin-bottom:-20px;display:flex;justify-content:flex-end;gap:8px}.readonly{opacity:.62}@media(max-width:620px){.modal{padding:0}.editor{border-radius:22px 22px 0 0;max-height:92vh;padding:18px 14px calc(18px + env(safe-area-inset-bottom))}.editorgrid{grid-template-columns:1fr}.editoractions{padding-bottom:calc(18px + env(safe-area-inset-bottom))}}</style>
+.leadcard{border:1px solid var(--line);border-radius:14px;background:var(--panel3);padding:0 12px;margin-top:9px}.leadcard .row{border-bottom:0}.msggrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 0 12px 18px}.msgbox{border:1px solid var(--line);border-radius:12px;padding:11px;background:var(--panel2)}.msgbox .muted{margin:8px 0 10px;white-space:pre-wrap}.msgbox .copymsg{width:100%}.emailrow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:0 0 10px 18px}.emailrow b{font-size:11px}.emailrow .copymsg{width:auto}.msgactions{display:grid;grid-template-columns:1fr 1fr;gap:8px}.mailbtn{text-decoration:none;text-align:center;display:inline-flex;align-items:center;justify-content:center}@media(max-width:620px){.msgactions{grid-template-columns:1fr}.emailrow{padding-left:0}}@media(max-width:720px){.msggrid{grid-template-columns:1fr;padding-left:0}}.leadmsg{padding:0 0 12px 18px;display:flex;gap:10px;align-items:flex-start}.leadmsg .muted{flex:1;white-space:pre-wrap}.copymsg{flex:0 0 auto;min-height:34px;padding:7px 10px}@media(max-width:620px){.leadmsg{padding-left:0;display:block}.copymsg{width:100%;margin-top:9px}}.editbtn{border:1px solid var(--line);background:var(--panel2);color:var(--muted);width:30px;height:30px;border-radius:9px;display:inline-grid;place-items:center;font-size:13px;flex:0 0 auto}.editbtn:hover{color:var(--text);border-color:#8a7cff66}.modal{position:fixed;inset:0;background:#05070bbd;backdrop-filter:blur(10px);z-index:110;display:none;align-items:flex-end;justify-content:center;padding:18px}.modal.on{display:flex}.editor{width:min(720px,100%);max-height:min(88vh,900px);overflow:auto;background:var(--panel2);border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:0 30px 90px #0009}.editorhead{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;position:sticky;top:-20px;background:var(--panel2);z-index:3;padding:20px 0 12px;margin-top:-20px}.editorgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.editorgrid .wide{grid-column:1/-1}.editoractions{position:sticky;bottom:-20px;background:var(--panel2);padding:12px 0 20px;margin-bottom:-20px;display:flex;justify-content:flex-end;gap:8px}.readonly{opacity:.62}@media(max-width:620px){.modal{padding:0}.editor{border-radius:22px 22px 0 0;max-height:92vh;padding:18px 14px calc(18px + env(safe-area-inset-bottom))}.editorgrid{grid-template-columns:1fr}.editoractions{padding-bottom:calc(18px + env(safe-area-inset-bottom))}}
+/* ===== SANYI OS 3.0 · AURORA COMMAND UI ===== */
+:root{
+ --bg:#06070b;--bg2:#0a0d14;--sidebar:#090c13e8;--panel:#10151ee6;--panel2:#151c28e8;--panel3:#0b1018;
+ --text:#f7f8fc;--muted:#8d98ac;--line:#ffffff12;--line2:#ffffff1c;
+ --accent:#8b7cff;--accent2:#58e4d1;--accent3:#ff8bc2;--green:#55dfa8;--amber:#ffc86b;--red:#ff7188;--blue:#70b9ff;
+ --shadow:0 24px 80px #00000055;--softshadow:0 12px 36px #00000028;--radius:24px;--ease:cubic-bezier(.2,.8,.2,1)
+}
+html[data-theme=light]{
+ --bg:#eef2f8;--bg2:#f7f9fc;--sidebar:#f8faffea;--panel:#fffffff2;--panel2:#f6f8fcf2;--panel3:#edf1f7;
+ --text:#151923;--muted:#687386;--line:#18223810;--line2:#18223818;--shadow:0 20px 60px #3f4e6a17;--softshadow:0 10px 28px #3f4e6a12
+}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{
+ background:
+  radial-gradient(900px 650px at 8% -10%,#6f5cff21,transparent 55%),
+  radial-gradient(850px 650px at 96% 4%,#39d7c819,transparent 52%),
+  radial-gradient(700px 600px at 65% 100%,#f16aad12,transparent 55%),
+  linear-gradient(180deg,var(--bg),var(--bg2));
+ letter-spacing:-.01em;overflow-x:hidden
+}
+body:before{
+ content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.34;
+ background-image:linear-gradient(#ffffff05 1px,transparent 1px),linear-gradient(90deg,#ffffff05 1px,transparent 1px);
+ background-size:52px 52px;mask-image:linear-gradient(to bottom,#0008,transparent 70%)
+}
+.ambient{position:fixed;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:-1;opacity:.22}
+.ambient.a{width:360px;height:360px;left:-140px;top:20%;background:#7766ff}
+.ambient.b{width:440px;height:440px;right:-180px;top:8%;background:#42dfc6}
+.shell{grid-template-columns:276px minmax(0,1fr)}
+.sidebar{
+ padding:26px 18px 22px;border-right:1px solid var(--line);
+ background:linear-gradient(180deg,#0d1119e8,#080b11f2);backdrop-filter:blur(28px) saturate(140%);
+ box-shadow:18px 0 60px #0002
+}
+html[data-theme=light] .sidebar{background:linear-gradient(180deg,#fffffff0,#f5f8fce8)}
+.brand{padding:0 7px 24px;gap:13px}
+.logo{
+ width:46px;height:46px;border-radius:15px;background:
+ radial-gradient(circle at 25% 20%,#ffffff9e 0 3%,transparent 4%),
+ linear-gradient(145deg,#6655ff,#9b72ff 48%,#52dcca);
+ box-shadow:0 14px 34px #7866ff4a,inset 0 1px #ffffff80;font-size:16px
+}
+.brand strong{font-size:15px;letter-spacing:-.025em}.brand small{font-size:9px;letter-spacing:.08em;text-transform:uppercase}
+.brandmark{display:flex;align-items:center;gap:7px}.version{font-size:8px;padding:3px 6px;border-radius:99px;border:1px solid #8b7cff35;color:#b8b0ff;background:#8b7cff12}
+.sync{margin:0 2px 22px;padding:12px 13px;border-radius:15px;background:linear-gradient(180deg,#ffffff07,#ffffff03);box-shadow:inset 0 1px #ffffff0b}
+.navlabel{font-size:8px;letter-spacing:.18em;color:var(--muted);font-weight:850;margin:16px 12px 8px}
+.nav{gap:6px}
+.nav button{
+ display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:14px;font-size:11px;font-weight:760;transition:.22s var(--ease)
+}
+.nav button:hover{background:#ffffff07;color:var(--text);transform:translateX(2px)}
+.nav button.on{
+ background:linear-gradient(135deg,#8a7cff20,#53d9cc0b);border-color:#8b7cff2e;color:#e5e1ff;
+ box-shadow:inset 0 1px #ffffff0c,0 8px 24px #0002
+}
+.navico{
+ width:29px;height:29px;display:grid;place-items:center;border-radius:9px;background:#ffffff08;border:1px solid #ffffff08;
+ font-size:13px;color:#b8b0ff;flex:0 0 auto
+}
+.nav button.on .navico{background:linear-gradient(145deg,#8b7cff42,#58e4d11c);border-color:#8b7cff35;color:#fff}
+.sidefoot{left:18px;right:18px;bottom:18px}.sidefoot .btn{border-radius:13px}
+.main{max-width:1540px;padding:0 38px 70px}
+.topbar{
+ position:sticky;top:0;z-index:18;margin:0 -12px 24px;padding:20px 12px 16px;
+ background:linear-gradient(180deg,var(--bg) 20%,color-mix(in srgb,var(--bg) 86%,transparent),transparent);
+ backdrop-filter:blur(18px)
+}
+.topcontext{min-width:0}.topcontext h1{font-size:30px;font-weight:860;letter-spacing:-.055em}.topmeta{font-size:10px;color:var(--muted);margin-top:5px}
+.topactions .btn{box-shadow:var(--softshadow)}
+.btn{
+ min-height:40px;border-radius:12px;padding:9px 13px;background:linear-gradient(180deg,#ffffff0c,#ffffff05);
+ border-color:var(--line2);transition:.2s var(--ease);box-shadow:inset 0 1px #ffffff0a
+}
+.btn:hover{transform:translateY(-1px);border-color:#8b7cff55;background:#ffffff0e}
+.btn:active{transform:translateY(0) scale(.985)}
+.btn.primary{
+ background:linear-gradient(135deg,#745fff,#9a78ff 48%,#6d91ff);box-shadow:0 12px 30px #725fff32,inset 0 1px #ffffff40
+}
+.btn.ghost{background:transparent;box-shadow:none}
+.iconbtn{width:40px;border-radius:50%}
+.page.on{animation:pageIn .32s var(--ease) both}@keyframes pageIn{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+.grid{gap:16px}
+.card{
+ position:relative;border-radius:var(--radius);padding:20px;border:1px solid var(--line2);
+ background:linear-gradient(145deg,#ffffff09,#ffffff03),var(--panel);
+ box-shadow:var(--softshadow),inset 0 1px #ffffff0c;overflow:hidden
+}
+.card:before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(135deg,#ffffff08,transparent 22%);opacity:.55}
+.card>*{position:relative;z-index:1}
+.card:hover{border-color:#ffffff20}
+.hero{
+ min-height:210px;padding:30px 30px;background:
+ radial-gradient(520px 280px at 90% 10%,#58e4d122,transparent 65%),
+ radial-gradient(460px 260px at 55% 110%,#ff7bb417,transparent 67%),
+ linear-gradient(135deg,#171a2a,#141a29 52%,#251d45);
+ border-color:#8b7cff28
+}
+.hero:before{background-image:linear-gradient(#ffffff06 1px,transparent 1px),linear-gradient(90deg,#ffffff06 1px,transparent 1px);background-size:30px 30px;mask-image:linear-gradient(110deg,#0004,transparent 60%)}
+.hero:after{right:-60px;top:-90px;width:330px;height:330px;background:radial-gradient(circle,#8b7cff57,transparent 68%);filter:blur(4px)}
+.hero h2{font-size:30px;line-height:1.08;letter-spacing:-.055em;max-width:820px;margin:10px 0 11px}
+.hero p{font-size:12px;max-width:760px}
+.eyebrow{font-size:8px;letter-spacing:.2em;color:#9ca7bb}
+h2{font-size:19px}h3{font-size:14px}
+.sectionhead{margin:26px 2px 11px}
+.sectionhead h2{margin-top:3px}
+.muted{font-size:11px;line-height:1.65;color:var(--muted)}
+.kpis{gap:12px;margin:16px 0}
+.kpi{
+ padding:16px;border-radius:17px;background:linear-gradient(145deg,#ffffff09,#ffffff03);border:1px solid var(--line2);
+ box-shadow:inset 0 1px #ffffff0b;transition:.2s var(--ease)
+}
+.kpi:hover{transform:translateY(-2px);border-color:#8b7cff2f}.kpi .v{font-size:27px}.kpi .sub{font-size:9px}
+.area{
+ min-height:112px;padding:16px;border-radius:17px;background:linear-gradient(150deg,#ffffff07,#ffffff02);border-color:var(--line2);
+ transition:.22s var(--ease)
+}
+.area:hover{transform:translateY(-2px);border-color:#8b7cff30}.area .n{font-size:24px}.area strong{font-size:12px}
+.badge{padding:5px 8px;border-radius:999px;font-size:8px;letter-spacing:.02em;background:#ffffff08;border-color:#ffffff12}
+.project{
+ border-radius:17px;padding:16px;background:linear-gradient(145deg,#ffffff06,#ffffff02);border-color:var(--line2);
+ transition:.2s var(--ease)
+}
+.project:hover{border-color:#8b7cff35}.project h3{font-size:13px;margin:8px 0 5px}
+.next{padding:10px 11px;border-radius:11px;background:linear-gradient(135deg,#8b7cff12,#58e4d108);border:1px solid #8b7cff15}
+.row{padding:13px 0}.row b{font-size:11.5px}.row small{font-size:9.5px}
+.dot{box-shadow:0 0 0 4px #ffffff05}.dot.purple{box-shadow:0 0 15px #8b7cff70}.dot.green{box-shadow:0 0 15px #55dfa870}.dot.amber{box-shadow:0 0 15px #ffc86b60}.dot.red{box-shadow:0 0 15px #ff718860}
+.focus{
+ padding:16px;border-radius:17px;background:linear-gradient(135deg,#ffffff07,#ffffff02);border-color:var(--line2);
+ transition:.2s var(--ease)
+}
+.focus:hover{transform:translateX(3px);border-color:#8b7cff34}
+.focusnum{width:32px;height:32px;border-radius:11px;background:linear-gradient(145deg,#8b7cff35,#58e4d112);color:#fff}
+.progress{height:6px;background:#ffffff07}.progress span{background:linear-gradient(90deg,#7663ff,#a77cff 45%,#58e4d1);box-shadow:0 0 14px #8b7cff45}
+.input,textarea,select{
+ border-radius:14px;padding:12px 13px;background:#070a10a8;border-color:var(--line2);transition:.18s var(--ease)
+}
+html[data-theme=light] .input,html[data-theme=light] textarea,html[data-theme=light] select{background:#f7f9fce8}
+.input:focus,textarea:focus,select:focus{border-color:#8b7cff70;box-shadow:0 0 0 4px #8b7cff12,0 12px 30px #0001}
+textarea{min-height:116px}
+.field label{font-size:8px;letter-spacing:.15em}
+.tabs{gap:7px;padding:3px 2px 9px;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}
+.tab{padding:9px 11px;border-radius:12px;background:#ffffff05}.tab.on{background:linear-gradient(135deg,#8b7cff22,#58e4d10c);color:#e1ddff}
+.tablewrap{border-radius:17px;border-color:var(--line2);background:#080b12b0;box-shadow:inset 0 1px #ffffff08}
+table{font-size:10px}th{background:#111722f4;backdrop-filter:blur(12px)}th,td{padding:11px 12px}
+.login{background:
+ radial-gradient(700px 500px at 15% 10%,#7866ff2b,transparent 60%),
+ radial-gradient(700px 500px at 90% 90%,#54dfcb20,transparent 60%),
+ #06070b}
+.loginbox{width:min(460px,100%);padding:34px;border-radius:28px;background:linear-gradient(145deg,#ffffff0c,#ffffff04),#0d121bcc;border-color:#ffffff18;backdrop-filter:blur(24px)}
+.loginbox .logo{width:54px;height:54px;border-radius:18px}
+.toast{border:1px solid #ffffff16;background:#121824e8;backdrop-filter:blur(18px);border-radius:14px;padding:12px 15px}
+.leadcard{
+ position:relative;border-radius:20px;padding:4px 15px 15px;margin-top:12px;background:
+ radial-gradient(420px 180px at 100% 0,#8b7cff0e,transparent 70%),
+ linear-gradient(145deg,#ffffff06,#ffffff02);border-color:var(--line2);overflow:hidden
+}
+.leadcard:after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(#8b7cff,#58e4d1);opacity:.8}
+.leadcard .row{padding:15px 0 11px}
+.emailrow{padding:0 0 12px 18px}.emailrow b{font-size:10.5px;font-weight:650}
+.tone-tabs{display:flex;gap:6px;padding:2px 0 10px 18px}
+.tone-tab{border:1px solid var(--line2);background:#ffffff05;color:var(--muted);border-radius:10px;padding:7px 10px;font-size:9px;font-weight:800}
+.tone-tab.on{background:linear-gradient(135deg,#8b7cff26,#58e4d10c);border-color:#8b7cff38;color:#eeeaff}
+.tone-panel{display:none;padding-left:18px}.tone-panel.on{display:block;animation:pageIn .2s var(--ease)}
+.msggrid{display:block;padding:0}.msgbox{border-radius:15px;padding:13px;background:#070a1099;border-color:var(--line2)}
+.msgbox .muted{font-size:10.5px;line-height:1.65;max-height:240px;overflow:auto;padding-right:5px}
+.msgactions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mailbtn{border-radius:11px}
+.editbtn{width:32px;height:32px;border-radius:10px;background:#ffffff07}
+.modal{background:#020308c7;backdrop-filter:blur(14px)}
+.editor{border-radius:26px;padding:22px;background:linear-gradient(145deg,#ffffff08,#ffffff02),#111722f4;border-color:#ffffff1b}
+.editorhead,.editoractions{background:#111722f4}
+.statusbar{border-radius:999px;background:#ffffff06}
+@media(max-width:1100px){.shell{grid-template-columns:238px minmax(0,1fr)}.main{padding-left:26px;padding-right:26px}.hero{min-height:190px}}
+@media(max-width:820px){
+ body{padding-bottom:calc(88px + env(safe-area-inset-bottom))}
+ .shell{display:block}.main{padding:0 12px 28px}
+ .sidebar{
+  left:8px;right:8px;bottom:8px;top:auto;height:auto;padding:6px 7px calc(6px + env(safe-area-inset-bottom));
+  border:1px solid #ffffff18;border-radius:20px;background:#0c111ad9;backdrop-filter:blur(26px) saturate(150%);
+  box-shadow:0 20px 60px #0008
+ }
+ html[data-theme=light] .sidebar{background:#f8faffeb}
+ .brand,.sync,.sidefoot,.navlabel{display:none}
+ .nav{display:flex;gap:2px;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:none}.nav::-webkit-scrollbar{display:none}
+ .nav button{min-width:68px;justify-content:center;flex-direction:column;gap:3px;padding:7px 6px;border-radius:13px;font-size:8px;scroll-snap-align:start}
+ .nav button:hover{transform:none}.navico{width:27px;height:25px;border:0;background:transparent;font-size:13px}.nav button.on{box-shadow:none}
+ .topbar{margin:0 -4px 12px;padding:14px 4px 12px;background:linear-gradient(180deg,var(--bg) 35%,color-mix(in srgb,var(--bg) 88%,transparent),transparent)}
+ .topcontext h1{font-size:24px}.topmeta{display:none}.pageEyebrow{font-size:7px}
+ .topactions{gap:6px}.topactions .btn:not(.iconbtn){display:none}.iconbtn{display:grid}
+ .mobiletop{display:flex;max-width:150px;font-size:8px;padding:6px 9px;min-height:32px}
+ .grid{display:block}.card,.s3,.s4,.s5,.s6,.s7,.s8,.s12{margin-bottom:10px}
+ .card{border-radius:20px;padding:16px}
+ .hero{min-height:0;padding:21px 18px}.hero h2{font-size:24px;line-height:1.08}.hero p{font-size:10.5px}
+ .hero .actions{display:grid;grid-template-columns:1fr 1fr}.hero .actions .btn{width:100%}
+ .kpis{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.kpi{padding:13px;border-radius:15px}.kpi .v{font-size:23px}
+ .areas,.pipeline{grid-template-columns:1fr 1fr;gap:8px}.area{min-height:104px;padding:13px}
+ .sectionhead{align-items:flex-start;margin-top:18px}.sectionhead .btn{flex:0 0 auto}
+ .focus{grid-template-columns:34px minmax(0,1fr);padding:13px}.focus .actions{grid-column:2}.focus .badge{grid-column:auto}
+ .leadcard{padding:2px 12px 13px}.leadcard .row{align-items:flex-start}.emailrow,.tone-tabs,.tone-panel{padding-left:0}
+ .tone-tabs{position:sticky;top:68px;z-index:3;background:linear-gradient(var(--panel3),var(--panel3));padding-top:6px}
+ .msgbox .muted{max-height:none}
+ .msgactions{grid-template-columns:1fr}.copymsg{width:100%}
+ .editor{border-radius:24px 24px 0 0}
+ .tablewrap{margin-left:-4px;margin-right:-4px}
+}
+@media(max-width:440px){
+ .areas,.pipeline,.runwaygrid{grid-template-columns:1fr}
+ .hero .actions{grid-template-columns:1fr}
+ .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .topcontext h1{font-size:22px}
+ .nav button{min-width:64px}
+ .moneybig{font-size:28px}
+}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+
+</style>
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
-<body>
+<body><div class="ambient a"></div><div class="ambient b"></div>
 <div id="login" class="login"><div class="loginbox"><div class="logo">S</div><div class="eyebrow">SANYI OS</div><h2>A teljes rendszered. Egy helyen.</h2><p class="muted">A Dashboard közvetlenül a privát SANYI OS Google Sheets adatbázisból olvas. A személyes és pénzügyi adataid nem kerülnek bele a publikus GitHub-kódba.</p><div id="loginState" class="privacy">Google Sheets adatbázis-hozzáférés szükséges.</div><button id="loginBtn" class="btn primary">Google adatbázis csatlakoztatása</button></div></div>
 <div class="shell">
-<aside class="sidebar"><div class="brand"><div class="logo">S</div><div><strong>Sanyi OS</strong><small>Life Operating System</small></div></div><div class="sync"><span id="syncDot" class="syncdot"></span><b id="syncTitle">Nincs kapcsolat</b><br><span id="syncText">Source of Truth</span></div><nav class="nav"><button class="on" data-page="dashboard">⌂ Dashboard</button><button data-page="today">🎯 Today</button><button data-page="inbox">＋ Inbox</button><button data-page="projects">🧱 Projektek</button><button data-page="nfc">📡 NFC Leads</button><button data-page="wishlist">💭 Vágyparkoló</button><button data-page="database">▦ Adatbázis</button><button data-page="reset">↻ Reset</button></nav><div class="sidefoot"><button id="refreshBtn" class="btn ghost">↻ Adatok frissítése</button><button id="logoutBtn" class="btn ghost">Kilépés</button></div></aside>
-<main class="main"><header class="topbar"><div><div class="eyebrow" id="pageEyebrow">SANYI OS · SOURCE OF TRUTH</div><h1 id="pageTitle">Dashboard</h1></div><div class="topactions"><div id="mobileStatus" class="statusbar mobiletop">● Kapcsolódás…</div><button id="themeBtn" class="btn iconbtn">☀️</button><button class="btn primary" data-goto="inbox">＋ Rögzítés</button></div></header>
+<aside class="sidebar">
+<div class="brand"><div class="logo">S</div><div><div class="brandmark"><strong>Sanyi OS</strong><span class="version">3.0</span></div><small>Personal Command Center</small></div></div>
+<div class="sync"><span id="syncDot" class="syncdot"></span><b id="syncTitle">Nincs kapcsolat</b><br><span id="syncText">Source of Truth</span></div>
+<div class="navlabel">COMMAND</div>
+<nav class="nav">
+<button class="on" data-page="dashboard"><span class="navico">⌂</span><span>Home</span></button>
+<button data-page="today"><span class="navico">◎</span><span>Today</span></button>
+<button data-page="inbox"><span class="navico">✦</span><span>Inbox</span></button>
+<button data-page="projects"><span class="navico">◫</span><span>Projektek</span></button>
+<button data-page="nfc"><span class="navico">⌁</span><span>NFC</span></button>
+<button data-page="wishlist"><span class="navico">◇</span><span>Vágyak</span></button>
+<button data-page="database"><span class="navico">▦</span><span>Adatok</span></button>
+<button data-page="reset"><span class="navico">↻</span><span>Reset</span></button>
+</nav>
+<div class="sidefoot"><button id="refreshBtn" class="btn ghost">↻ Adatok frissítése</button><button id="logoutBtn" class="btn ghost">Kilépés</button></div>
+</aside>
+<main class="main"><header class="topbar"><div class="topcontext"><div class="eyebrow" id="pageEyebrow">SANYI OS · COMMAND CENTER</div><h1 id="pageTitle">Dashboard</h1><div class="topmeta">Mi igényel most figyelmet?</div></div><div class="topactions"><div id="mobileStatus" class="statusbar mobiletop">● Kapcsolódás…</div><button id="themeBtn" class="btn iconbtn" aria-label="Téma váltása">☀️</button><button class="btn primary" data-goto="inbox">＋ Gyors rögzítés</button></div></header>
 <section id="dashboard" class="page on"><div class="grid"><article class="card hero s12"><div class="eyebrow">ULTRON ÖSSZKÉP</div><h2 id="ultronTitle">Betöltöm a rendszer állapotát…</h2><p id="ultronText" class="muted"></p><div class="actions"><button class="btn primary" data-goto="today">Mai fókusz →</button><button class="btn" data-goto="database">Teljes adatbázis</button></div></article></div><div class="sectionhead"><div><div class="eyebrow">ÉLETSTRATÉGIA</div><h2>Választási szabadság</h2><p class="muted">Nem a jelenlegi helyzet mindenáron történő megtartása a cél, hanem egyre nagyobb mozgástér építése.</p></div></div><div class="areas"><div class="area"><span class="badge">1 · MONEY</span><strong>Pénzügyi kifutópálya</strong><div class="muted">Tartalék és megtakarítás, hogy ne kényszerből kelljen döntened.</div></div><div class="area"><span class="badge business">2 · BUSINESS</span><strong>Alternatív bevétel</strong><div class="muted">TheSign, NFC, fellépések és új bevételi utak valós piaci tesztekkel.</div></div><div class="area"><span class="badge high">3 · BOUNDARIES</span><strong>Munkahelyi határok</strong><div class="muted">Más sürgőssége ne automatikusan váljon a te vészhelyzeteddé.</div></div><div class="area"><span class="badge active">CÉL</span><strong>A munka legyen választás</strong><div class="muted">A jelenlegi állás maradhat, de ne azért, mert nincs más reális lehetőség.</div></div></div><div id="kpis" class="kpis"></div><div class="grid"><article class="card s7"><div class="sectionhead"><div><div class="eyebrow">STRATÉGIA</div><h2>Merre tartunk?</h2></div><button class="btn ghost" data-goto="database" data-db="Célok">Célok →</button></div><div id="direction"></div></article><article class="card s5"><div class="sectionhead"><div><div class="eyebrow">KÖVETKEZŐ 30 NAP</div><h2>Radar</h2></div></div><div id="radar" class="list"></div></article><article class="card s7"><div class="sectionhead"><div><div class="eyebrow">AKTÍV RENDSZER</div><h2>Projektek</h2></div><button class="btn ghost" data-goto="projects">Mind →</button></div><div id="dashProjects"></div></article><article class="card s5"><div class="sectionhead"><div><div class="eyebrow">TERÜLETEK</div><h2>Élettérkép</h2></div></div><div id="areas" class="areas"></div></article><article class="card s6"><div class="sectionhead"><div><div class="eyebrow">BUSINESS</div><h2>Ajánlatok és validáció</h2></div><button class="btn ghost" data-goto="database" data-db="Business">Részletek →</button></div><div id="business" class="pipeline"></div></article><article class="card s6"><div class="sectionhead"><div><div class="eyebrow">MONEY</div><h2>Pénzügyi pillanatkép</h2></div><button class="btn ghost" data-goto="database" data-db="Pénzügyek">Részletek →</button></div><div id="money"></div></article><article class="card s12"><div class="sectionhead"><div><div class="eyebrow">RENDSZER</div><h2>Mi van még a háttérben?</h2></div></div><div id="systemMap" class="areas"></div></article></div></section>
 <section id="today" class="page"><div class="grid"><article class="card hero s12"><div class="eyebrow">TODAY · MAXIMUM 3</div><h2 id="todayHeadline">A rendszer kiválasztja, mi kér most figyelmet.</h2><p class="muted">Nem a teljes teendőlistát látod. Csak azt, aminek most valóban jelentősége van.</p></article><article class="card s8"><div class="eyebrow">FÓKUSZ FIRST</div><div id="focusList"></div></article><article class="card s4"><div class="eyebrow">WAITING / FOLLOW-UP</div><div id="waitingList" class="list"></div></article><article class="card s12"><div class="eyebrow">QUICK WINS</div><div id="quickWins" class="list"></div></article></div></section>
 <section id="inbox" class="page"><div class="grid"><article class="card s5"><div class="eyebrow">CAPTURE</div><h2 style="margin:6px 0 14px">Dobd be. A rendszer majd rendezi.</h2><form id="captureForm" class="form"><div class="field"><label>Mi jár a fejedben?</label><textarea id="captureText" placeholder="Teendő, ötlet, vásárlás, döntés, bármi…" required></textarea></div><div class="field"><label>Típus · opcionális</label><select id="captureType"><option value="Unsorted">Nem tudom / később</option><option>Task</option><option>Idea</option><option>Business</option><option>Money</option><option>Personal</option></select></div><button id="captureSave" class="btn primary" type="submit">Rögzítés a Source of Truth-ba</button></form></article><article class="card s7"><div class="sectionhead"><div><div class="eyebrow">INBOX</div><h2>Feldolgozásra vár</h2></div><span id="inboxCount" class="badge"></span></div><div id="inboxList" class="list"></div></article></div></section>
@@ -48,7 +279,16 @@ let token=sessionStorage.getItem('sanyiSheetsToken')||'',user=null,DB={},dbSheet
 const $=id=>document.getElementById(id),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),norm=s=>String(s||'').trim().toLowerCase(),todayKey=()=>new Date().toISOString().slice(0,10),money=n=>new Intl.NumberFormat('hu-HU',{maximumFractionDigits:0}).format(Number(String(n||0).replace(',','.'))||0)+' Ft';
 function toast(msg){$('toast').textContent=msg;$('toast').classList.add('on');setTimeout(()=>$('toast').classList.remove('on'),2200)}
 function setTheme(t){document.documentElement.dataset.theme=t;localStorage.setItem('sanyiTheme',t);$('themeBtn').textContent=t==='dark'?'☀️':'🌙'}setTheme(localStorage.getItem('sanyiTheme')||'dark');$('themeBtn').onclick=()=>setTheme(document.documentElement.dataset.theme==='dark'?'light':'dark');
-function go(page){document.querySelectorAll('.page').forEach(x=>x.classList.toggle('on',x.id===page));document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('on',x.dataset.page===page));const titles={dashboard:'Dashboard',today:'Today',inbox:'Inbox',projects:'Projektek',nfc:'NFC Lead Engine',wishlist:'Vágyparkoló',database:'Adatbázis',reset:'Heti Reset'};$('pageTitle').textContent=titles[page]||'Sanyi OS';window.scrollTo({top:0,behavior:'smooth'})}
+function go(page){
+ const titles={dashboard:'Command Center',today:'Mai fókusz',inbox:'Inbox',projects:'Projektek',nfc:'NFC Lead Engine',wishlist:'Vágyparkoló',database:'Adatbázis',reset:'Heti Reset'};
+ const brows={dashboard:'SANYI OS · COMMAND CENTER',today:'ATTENTION · NOW',inbox:'CAPTURE · CLEAR YOUR HEAD',projects:'OUTCOMES · PROGRESS',nfc:'THESIGN · SALES ENGINE',wishlist:'PAUSE · DECIDE BETTER',database:'SOURCE OF TRUTH · LIVE',reset:'REVIEW · REALIGN'};
+ document.querySelectorAll('.page').forEach(x=>x.classList.toggle('on',x.id===page));
+ document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('on',x.dataset.page===page));
+ $('pageTitle').textContent=titles[page]||'Sanyi OS';$('pageEyebrow').textContent=brows[page]||'SANYI OS';
+ document.body.dataset.page=page;localStorage.setItem('sanyiLastPage',page);
+ if(location.hash!=='#'+page)history.replaceState(null,'','#'+page);
+ window.scrollTo({top:0,behavior:'smooth'})
+}
 document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.page)));document.querySelectorAll('[data-goto]').forEach(b=>b.addEventListener('click',()=>{if(b.dataset.db)dbSheet=b.dataset.db;go(b.dataset.goto);if(b.dataset.goto==='database')renderDatabase()}));
 async function discoverGoogleClientId(){
  const r=await fetch('https://identitytoolkit.googleapis.com/v1/accounts:createAuthUri?key='+encodeURIComponent(GOOGLE_API_KEY),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({providerId:'google.com',continueUri:location.origin+location.pathname})});
@@ -131,7 +371,36 @@ const system=[['Célok',rows('Célok').length],['Rutinok',rows('Rutinok').length
 function projectCard(x){const pct=Math.max(0,Math.min(100,Number(x['Haladás %'])||0));return `<div class="project"><div class="projecttop"><div><span class="badge ${norm(x['Prioritás'])==='high'?'high':''}">${esc(x['Prioritás'])}</span><span class="badge">${esc(x['Terület'])}</span><h3>${esc(x['Projekt neve'])}</h3></div><div class="actions"><b>${pct}%</b>${editBtn(x)}</div></div><div class="muted">${esc(x['Kívánt eredmény'])}</div><div class="progress"><span style="width:${pct}%"></span></div><div class="next"><b>Következő:</b> ${esc(x['Következő lépés']||'Nincs rögzítve')}</div></div>`}
 function renderToday(){const tasks=activeTasks().map(x=>{const date=x['Határidő']||x['Céldátum'],d=daysFrom(date);let score=0;if(d!==null&&d<0)score+=100+Math.abs(d);else if(d===0)score+=90;else if(d!==null&&d<=3)score+=70-d;if(norm(x['Prioritás'])==='high')score+=35;if(norm(x['Quick win'])==='yes')score+=8;return{x,score,d}}).sort((a,b)=>b.score-a.score);const focus=tasks.slice(0,3);$('todayHeadline').textContent=focus.length?`${focus.length} dolog került a mai fókuszba.`:'Nincs olyan nyitott tétel, ami most fókuszt kér.';$('focusList').innerHTML=focus.length?focus.map((f,i)=>`<div class="focus ${f.d!==null&&f.d<0?'overdue':f.d===0?'today':''}"><div class="focusnum">${i+1}</div><div><b>${esc(f.x['Feladat / következő lépés'])}</b><small>${esc(f.x['Terület'])} · ${esc(f.x['Típus'])}${f.x['Project ID']?' · '+esc(f.x['Project ID']):''}</small></div><div class="actions"><span class="badge ${norm(f.x['Prioritás'])==='high'?'high':''}">${esc(f.x['Prioritás'])}</span>${editBtn(f.x)}</div></div>`).join(''):'<div class="empty">A Today tiszta. Ne gyártsunk mesterséges munkát.</div>';$('waitingList').innerHTML=waiting().map(x=>`<div class="row"><span class="dot amber"></span><div class="grow"><b>${esc(x['Tétel'])}</b><small>${esc(x['Kire / mire várunk'])}</small></div><span class="badge">${esc(x['Követési dátum'])}</span>${editBtn(x)}</div>`).join('')||'<div class="empty">Nincs Waiting elem.</div>';const qw=activeTasks().filter(x=>norm(x['Quick win'])==='yes');$('quickWins').innerHTML=qw.map(x=>`<div class="row"><span class="dot green"></span><div class="grow"><b>${esc(x['Feladat / következő lépés'])}</b><small>${esc(x['Becsült perc'])} perc · ${esc(x['Terület'])}</small></div>${editBtn(x)}</div>`).join('')||'<div class="empty">Nincs külön quick win.</div>'}
 function mailtoHref(email,subject,body){return 'mailto:'+encodeURIComponent(email)+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body)}
-function renderNfc(){const leads=rows('NFC Leads'),runs=rows('NFC Keresés'),cur=runs[runs.length-1];const fresh=leads.filter(x=>['új','jóváhagyva','megkeresendő'].includes(norm(x['Státusz'])));const contacted=leads.filter(x=>['megkeresve','follow-up'].includes(norm(x['Státusz'])));const won=leads.filter(x=>['eladás','lezárva'].includes(norm(x['Státusz'])));const known=leads.filter(x=>['már feldolgozva','korábban felszínre került'].includes(norm(x['Státusz'])));$('nfcHeadline').textContent=cur?cur['Település']+' · '+cur['Kategória']:'A következő keresési kör még nincs kijelölve.';$('nfcSub').textContent=cur?('Állapot: '+(cur['Státusz']||'—')+' · Kör: '+(cur['Kör']||'—')+' · maximum '+(cur['Max / futás']||'10')+' új lead.'):'Naponta egy településen, egy kategóriában haladunk; maximum 10 új, minősített kontakt.';$('nfcCurrent').innerHTML=cur?'<div class="project"><span class="badge business">'+esc(cur['Település'])+'</span><h3>'+esc(cur['Kategória'])+'</h3><p class="muted">'+esc(cur['Következő lépés'])+'</p><div class="next"><b>Kizárások:</b> '+esc(cur['Kizárások']||'—')+'</div></div>':'<div class="empty">Nincs keresési állapot.</div>';const p=[['Új',fresh.length,'feldolgozásra'],['Megkeresve',contacted.length,'follow-up'],['Eladás',won.length,'lezárt'],['Már ismert',known.length,'deduplikálva']];$('nfcPipeline').innerHTML=p.map(x=>'<div class="kpi"><div class="eyebrow">'+esc(x[0])+'</div><div class="v">'+x[1]+'</div><div class="sub">'+esc(x[2])+'</div></div>').join('');const show=leads.filter(x=>!['már feldolgozva','korábban felszínre került','kiesett','elutasítva'].includes(norm(x['Státusz']))).slice().reverse().slice(0,10);$('nfcLeads').innerHTML=show.length?show.map(x=>{const tegezo=x['Tegező üzenet']||x['Megkereső üzenet']||'',magazo=x['Magázó üzenet']||'',email=(x['E-mail']||'').trim(),subject='Google értékelő NFC tábla – '+x['Vállalkozás'];const emailLine=email?'<div class="emailrow"><span class="badge active">E-MAIL</span><b>'+esc(email)+'</b><button type="button" class="btn copymsg" data-copy-message="'+esc(email)+'">Cím másolása</button></div>':'<div class="emailrow muted">Nincs megerősített e-mail cím.</div>';const tegezMail=email&&tegezo?'<a class="btn primary mailbtn" href="'+esc(mailtoHref(email,subject,tegezo))+'">Tegező e-mail megnyitása</a>':'';const magMail=email&&magazo?'<a class="btn primary mailbtn" href="'+esc(mailtoHref(email,subject,magazo))+'">Magázó e-mail megnyitása</a>':'';return '<div class="leadcard"><div class="row"><span class="dot '+(norm(x['Státusz'])==='eladás'?'green':norm(x['Státusz']).includes('follow')?'amber':'purple')+'"></span><div class="grow"><b>'+esc(x['Vállalkozás'])+'</b><small>'+esc(x['Település'])+' · '+esc(x['Kategória'])+(x['Google értékelés']?' · ⭐ '+esc(x['Google értékelés']):'')+(x['Értékelésszám']?' · '+esc(x['Értékelésszám'])+' értékelés':'')+'</small></div>'+(x['Lead score']?'<span class="badge">'+esc(x['Lead score'])+'/100</span>':'<span class="badge">'+esc(x['Státusz'])+'</span>')+editBtn(x)+'</div>'+emailLine+'<div class="msggrid">'+(tegezo?'<div class="msgbox"><span class="badge business">TEGEZŐ</span><div class="muted">'+esc(tegezo)+'</div><div class="msgactions"><button type="button" class="btn copymsg" data-copy-message="'+esc(tegezo)+'">Tegező másolása</button>'+tegezMail+'</div></div>':'')+(magazo?'<div class="msgbox"><span class="badge">MAGÁZÓ</span><div class="muted">'+esc(magazo)+'</div><div class="msgactions"><button type="button" class="btn copymsg" data-copy-message="'+esc(magazo)+'">Magázó másolása</button>'+magMail+'</div></div>':'')+((!tegezo&&!magazo)?'<div class="leadmsg"><div class="muted">Ehhez a leadhez még nincs bekészített üzenet.</div></div>':'')+'</div></div>'}).join(''):'<div class="empty">A napi automatizált keresés után itt jelennek meg az új minősített kontaktok.</div>'}
+function renderNfc(){
+ const leads=rows('NFC Leads'),runs=rows('NFC Keresés'),cur=runs[runs.length-1];
+ const fresh=leads.filter(x=>['új','jóváhagyva','megkeresendő'].includes(norm(x['Státusz']))),
+ contacted=leads.filter(x=>['megkeresve','follow-up'].includes(norm(x['Státusz']))),
+ won=leads.filter(x=>['eladás','lezárva'].includes(norm(x['Státusz']))),
+ known=leads.filter(x=>['már feldolgozva','korábban felszínre került'].includes(norm(x['Státusz'])));
+ $('nfcHeadline').textContent=cur?cur['Település']+' · '+cur['Kategória']:'A következő értékesítési kör készen áll.';
+ $('nfcSub').textContent=cur?('Állapot: '+(cur['Státusz']||'—')+' · Kör: '+(cur['Kör']||'—')+' · maximum '+(cur['Max / futás']||'10')+' új lead.'):'Naponta egy településen, egy kategóriában haladunk; maximum 10 új, minősített kontakt.';
+ $('nfcCurrent').innerHTML=cur?'<div class="project"><span class="badge business">'+esc(cur['Település'])+'</span><h3>'+esc(cur['Kategória'])+'</h3><p class="muted">'+esc(cur['Következő lépés'])+'</p><div class="next"><b>Kizárások:</b> '+esc(cur['Kizárások']||'—')+'</div></div>':'<div class="empty">Nincs aktív keresési kör.</div>';
+ const p=[['Új',fresh.length,'feldolgozásra'],['Megkeresve',contacted.length,'follow-up'],['Eladás',won.length,'lezárt'],['Már ismert',known.length,'deduplikálva']];
+ $('nfcPipeline').innerHTML=p.map(x=>'<div class="kpi"><div class="eyebrow">'+esc(x[0])+'</div><div class="v">'+x[1]+'</div><div class="sub">'+esc(x[2])+'</div></div>').join('');
+ const show=leads.filter(x=>!['már feldolgozva','korábban felszínre került','kiesett','elutasítva'].includes(norm(x['Státusz']))).slice().reverse().slice(0,10);
+ $('nfcLeads').innerHTML=show.length?show.map((x,i)=>{
+  const tegezo=x['Tegező üzenet']||x['Megkereső üzenet']||'',magazo=x['Magázó üzenet']||'',email=(x['E-mail']||'').trim(),subject='Google értékelő NFC tábla – '+x['Vállalkozás'],tone='leadTone'+i;
+  const emailLine=email?'<div class="emailrow"><span class="badge active">E-MAIL</span><b>'+esc(email)+'</b><button type="button" class="btn copymsg" data-copy-message="'+esc(email)+'">Cím másolása</button></div>':'<div class="emailrow muted">Nincs megerősített e-mail cím · használd a javasolt közösségi csatornát.</div>';
+  const tegezMail=email&&tegezo?'<a class="btn primary mailbtn" href="'+esc(mailtoHref(email,subject,tegezo))+'">E-mail megnyitása</a>':'';
+  const magMail=email&&magazo?'<a class="btn primary mailbtn" href="'+esc(mailtoHref(email,subject,magazo))+'">E-mail megnyitása</a>':'';
+  const tabs=(tegezo||magazo)?'<div class="tone-tabs">'+(tegezo?'<button class="tone-tab on" type="button" data-tone-target="'+tone+'" data-tone="t">Tegező</button>':'')+(magazo?'<button class="tone-tab '+(!tegezo?'on':'')+'" type="button" data-tone-target="'+tone+'" data-tone="m">Magázó</button>':'')+'</div>':'';
+  const panels=(tegezo?'<div class="tone-panel on" data-tone-panel="'+tone+'" data-tone="t"><div class="msgbox"><div class="muted">'+esc(tegezo)+'</div><div class="msgactions"><button type="button" class="btn copymsg" data-copy-message="'+esc(tegezo)+'">Szöveg másolása</button>'+tegezMail+'</div></div></div>':'')+(magazo?'<div class="tone-panel '+(!tegezo?'on':'')+'" data-tone-panel="'+tone+'" data-tone="m"><div class="msgbox"><div class="muted">'+esc(magazo)+'</div><div class="msgactions"><button type="button" class="btn copymsg" data-copy-message="'+esc(magazo)+'">Szöveg másolása</button>'+magMail+'</div></div></div>':'');
+  const google=(x['Google értékelés']?'<span class="badge active">★ '+esc(x['Google értékelés'])+(x['Értékelésszám']?' · '+esc(x['Értékelésszám'])+' vélemény':'')+'</span>':'');
+  const score=x['Lead score']?'<span class="badge business">'+esc(x['Lead score'])+'/100</span>':'<span class="badge">'+esc(x['Státusz'])+'</span>';
+  return '<div class="leadcard"><div class="row"><span class="dot '+(norm(x['Státusz'])==='eladás'?'green':norm(x['Státusz']).includes('follow')?'amber':'purple')+'"></span><div class="grow"><b>'+esc(x['Vállalkozás'])+'</b><small>'+esc(x['Település'])+' · '+esc(x['Kategória'])+'</small><div class="actions" style="margin-top:7px">'+google+score+'</div></div>'+editBtn(x)+'</div>'+emailLine+tabs+panels+((!tegezo&&!magazo)?'<div class="leadmsg"><div class="muted">Ehhez a leadhez még nincs bekészített megkeresés.</div></div>':'')+'</div>'
+ }).join(''):'<div class="empty">Most nincs új minősített kontakt. Ez jó jel: a lista tiszta.</div>'
+}
+document.addEventListener('click',e=>{
+ const b=e.target.closest('[data-tone-target]');if(!b)return;
+ const target=b.dataset.toneTarget,tone=b.dataset.tone;
+ document.querySelectorAll('[data-tone-target="'+target+'"]').forEach(x=>x.classList.toggle('on',x.dataset.tone===tone));
+ document.querySelectorAll('[data-tone-panel="'+target+'"]').forEach(x=>x.classList.toggle('on',x.dataset.tone===tone));
+});
 function wishWaitDays(price){const p=numFt(price);if(p<=10000)return 2;if(p<=50000)return 7;if(p<=150000)return 14;return 30}
 function addDaysKey(days){const d=new Date();d.setHours(12,0,0,0);d.setDate(d.getDate()+days);return d.toISOString().slice(0,10)}
 function renderWishlist(){const all=rows('Vágyparkoló'),waiting=all.filter(x=>norm(x['Státusz'])==='várakozik'),kept=all.filter(x=>['még mindig kell','megvenném'].includes(norm(x['Státusz']))),bought=all.filter(x=>norm(x['Státusz'])==='megvettem'),dropped=all.filter(x=>norm(x['Státusz'])==='elengedtem');const waitingValue=waiting.reduce((a,x)=>a+numFt(x['Ár (Ft)']),0),droppedValue=dropped.reduce((a,x)=>a+(numFt(x['Elengedett érték (Ft)'])||numFt(x['Ár (Ft)'])),0);$('wishKpis').innerHTML=[['Várakozik',waiting.length,money(waitingValue)],['Még kell',kept.length,'újraértékelt'],['Megvettem',bought.length,'lezárt'],['Elengedtem',money(droppedValue),'meg nem költött']].map(x=>'<div class="kpi"><div class="eyebrow">'+esc(x[0])+'</div><div class="v">'+esc(x[1])+'</div><div class="sub">'+esc(x[2])+'</div></div>').join('');const show=all.filter(x=>!['elengedtem','megvettem'].includes(norm(x['Státusz']))).slice().reverse();$('wishList').innerHTML=show.length?show.map(x=>{const d=daysFrom(x['Újraértékelés']),due=d===null?'—':d<0?'lejárt':d===0?'ma':d===1?'holnap':d+' nap';const cls=d!==null&&d<=0?'amber':'purple';return '<div class="project"><div class="projecttop"><div><span class="badge '+cls+'">'+esc(x['Státusz'])+'</span><h3>'+esc(x['Vágy / termék'])+'</h3></div><div class="actions"><b>'+money(x['Ár (Ft)'])+'</b>'+editBtn(x)+'</div></div><div class="muted">'+esc(x['Miért szeretném?']||'Nincs indok rögzítve.')+'</div><div class="next"><b>Újraértékelés:</b> '+esc(x['Újraértékelés']||'—')+' · '+due+(x['Várakozási idő']?' · '+esc(x['Várakozási idő']):'')+'</div></div>'}).join(''):'<div class="empty">A Vágyparkoló üres. Ez nem hiba. 🙂</div>'}
@@ -155,5 +424,7 @@ $('captureForm').addEventListener('submit',async e=>{e.preventDefault();const te
 $('resetForm').addEventListener('submit',async e=>{e.preventDefault();const vals=[$('rw1').value,$('rw2').value,$('rw3').value,$('rw4').value,$('rw5').value].map(x=>x.trim());if(!vals.some(Boolean))return toast('Írj legalább egy választ.');try{const d=new Date(),onejan=new Date(d.getFullYear(),0,1),week=Math.ceil((((d-onejan)/86400000)+onejan.getDay()+1)/7);await append('Heti Reset',[todayKey(),`${d.getFullYear()}-W${String(week).padStart(2,'0')}`,...vals,'','Completed']);['rw1','rw2','rw3','rw4','rw5'].forEach(id=>$(id).value='');toast('Heti Reset elmentve ✓');await loadDB()}catch(err){toast(err.message)}});
 if(token){$('login').style.display='none';connect()}else{$('login').style.display='grid'}
 prepareGoogleAccess();
+const initialPage=(location.hash||'').replace('#','')||localStorage.getItem('sanyiLastPage')||'dashboard';
+if(['dashboard','today','inbox','projects','nfc','wishlist','database','reset'].includes(initialPage))go(initialPage);
 </script>
 </body></html>
